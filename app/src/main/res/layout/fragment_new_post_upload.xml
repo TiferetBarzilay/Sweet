@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewPostUploadFragment">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/civNewPostUploadFragment"
+        android:layout_width="181dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:text="מצרכים:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView4" />
+
+    <TextView
+        android:id="@+id/TextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="אופן הכנה:"
+
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edIngredientsNewPostUploadFragment" />
+
+    <TextView
+        android:id="@+id/TextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+
+        android:text="משך זמן הכנה:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edNameNewPostUploadFragment" />
+
+    <EditText
+        android:id="@+id/edNameNewPostUploadFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="שם:"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/civNewPostUploadFragment" />
+
+    <EditText
+        android:id="@+id/edIngredientsNewPostUploadFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView2" />
+
+    <EditText
+        android:id="@+id/edInstructionsNewPostUploadFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+    <EditText
+        android:id="@+id/etPreparationTimeNewPostUploadFragment"
+        android:layout_width="229dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView4"
+        app:layout_constraintEnd_toStartOf="@+id/TextView4"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnSaveNewPostUploadFragment"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="96dp"
+        android:backgroundTint="#F2B0AF"
+        android:text="שמירה"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelNewPostUploadFragment" />
+
+    <Button
+        android:id="@+id/btnCancelNewPostUploadFragment"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="#F2B0AF"
+        android:text="ביטול"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveNewPostUploadFragment"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveNewPostUploadFragment"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnPlusNewPostUploadFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#00FFFFFF"
+        android:src="@drawable/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/civNewPostUploadFragment"
+        app:layout_constraintEnd_toEndOf="@+id/civNewPostUploadFragment" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarApi"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/api"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarCategories"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarSearch" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarCategories"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/categories_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarHome"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarApi" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarHome"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarCategories" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarPersonalArea"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarSearch"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarSearch"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarApi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarPersonalArea" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="קטגוריות:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edInstructionsNewPostUploadFragment" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="חלבי"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbMilkyNewPostUploadFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbMilkyNewPostUploadFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbMilkyNewPostUploadFragment" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="פרווה"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbFurNewPostUploadFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbFurNewPostUploadFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbFurNewPostUploadFragment" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="קינוחים קרים"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbColdNewPostUploadFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbColdNewPostUploadFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbColdNewPostUploadFragment" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="קינוחים אפויים"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbBakedNewPostUploadFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbBakedNewPostUploadFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbBakedNewPostUploadFragment" />
+
+    <CheckBox
+        android:id="@+id/cbMilkyNewPostUploadFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <CheckBox
+        android:id="@+id/cbFurNewPostUploadFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbMilkyNewPostUploadFragment" />
+
+    <CheckBox
+        android:id="@+id/cbColdNewPostUploadFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <CheckBox
+        android:id="@+id/cbBakedNewPostUploadFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/cbColdNewPostUploadFragment"
+        app:layout_constraintTop_toBottomOf="@+id/cbColdNewPostUploadFragment" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PostPageFragment">
+
+    <ImageView
+        android:id="@+id/ivPostPhotoPostPageFragment"
+        android:layout_width="0dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/cake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TextView2"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="מצרכים:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView4" />
+
+    <TextView
+        android:id="@+id/TextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:layout_marginEnd="16dp"
+        android:text="אופן הכנה:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvIngredientsPostPageFragment" />
+
+    <TextView
+        android:id="@+id/TextView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="משך זמן הכנה:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNamePostPageFragment" />
+
+    <ImageButton
+        android:id="@+id/btnEditPostDetailsPostPageFragment"
+        android:layout_width="61dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/edit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivPostPhotoPostPageFragment" />
+
+    <TextView
+        android:id="@+id/tvNamePostPageFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="שם:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPostPhotoPostPageFragment" />
+
+    <TextView
+        android:id="@+id/tvIngredientsPostPageFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView2" />
+
+    <TextView
+        android:id="@+id/tvInstructionsPostPageFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TextView3" />
+
+    <TextView
+        android:id="@+id/tvPreparationTimePostPageFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView4"
+        app:layout_constraintEnd_toStartOf="@+id/TextView4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnDeletePostPageFragment"
+        android:layout_width="61dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/delete_button"
+        app:layout_constraintEnd_toStartOf="@+id/btnEditPostDetailsPostPageFragment"
+        app:layout_constraintTop_toTopOf="@+id/ivPostPhotoPostPageFragment" />
+
+
+    <ImageButton
+        android:id="@+id/btnNavbarApi"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/api"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarCategories"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarSearch" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarCategories"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/categories_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarHome"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarApi" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarHome"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarCategories" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarPersonalArea"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarSearch"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarSearch"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarApi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarPersonalArea" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="קטגוריות:"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvInstructionsPostPageFragment" />
+
+    <CheckBox
+        android:id="@+id/cbMilkyPostPageFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <CheckBox
+        android:id="@+id/cbFurPostPageFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cbMilkyPostPageFragment" />
+
+    <CheckBox
+        android:id="@+id/cbColdPostPageFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <CheckBox
+        android:id="@+id/cbBakedPostPageFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/cbColdPostPageFragment"
+        app:layout_constraintTop_toBottomOf="@+id/cbColdPostPageFragment" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="חלבי"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbMilkyPostPageFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbMilkyPostPageFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbMilkyPostPageFragment" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="פרווה"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbFurPostPageFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbFurPostPageFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbFurPostPageFragment" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="קינוחים קרים"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbColdPostPageFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbColdPostPageFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbColdPostPageFragment" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="קינוחים אפויים"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbBakedPostPageFragment"
+        app:layout_constraintEnd_toStartOf="@+id/cbBakedPostPageFragment"
+        app:layout_constraintTop_toTopOf="@+id/cbBakedPostPageFragment" />
+</androidx.constraintlayout.widget.ConstraintLayout>

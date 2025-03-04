@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    tools:context=".HomeFragment">
+
+    <ImageButton
+        android:id="@+id/btnNavbarApi"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/api"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarCategories"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarSearch" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarCategories"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/categories_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarHome"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarApi" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarHome"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarCategories" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarPersonalArea"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarSearch"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarSearch"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarApi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarPersonalArea" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHomeFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

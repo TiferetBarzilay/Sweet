@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PersonalAreaFragment">
+
+
+
+
+    <ImageView
+        android:id="@+id/ivUserPhotoPersonalAreaFragment"
+        android:layout_width="185dp"
+        android:layout_height="181dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/profile_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnFavouritesPersonalAreaFragment"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#F2B0AF"
+        android:text="מועדפים"
+        android:textColor="@color/black"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMyPostsPersonalAreaFragment"
+        app:layout_constraintEnd_toStartOf="@+id/btnMyPostsPersonalAreaFragment"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnMyPostsPersonalAreaFragment"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="276dp"
+        android:backgroundTint="#F2B0AF"
+        android:text="פוסטים שלי"
+        android:textColor="@color/black"
+        android:textColorLink="#673AB7"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAddPostsPersonalAreaFragment"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnFavouritesPersonalAreaFragment" />
+
+    <Button
+        android:id="@+id/btnAddPostsPersonalAreaFragment"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:backgroundTint="#F2B0AF"
+        android:text="העלאת פוסט"
+        android:textColor="@color/black"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMyPostsPersonalAreaFragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnMyPostsPersonalAreaFragment" />
+
+    <ImageButton
+
+        android:id="@+id/btnEditDetailsPersonalAreaFragment"
+        android:layout_width="61dp"
+        android:layout_height="56dp"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/edit_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivUserPhotoPersonalAreaFragment"
+        app:layout_constraintTop_toTopOf="@+id/ivUserPhotoPersonalAreaFragment" />
+
+    <EditText
+        android:id="@+id/etUserNamePersonalAreaFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="71dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="שם משתמש"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivUserPhotoPersonalAreaFragment" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarApi"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/api"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarCategories"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarSearch" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarCategories"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/categories_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarHome"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarApi" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarHome"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/home_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarCategories" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarPersonalArea"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/profile_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarSearch"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnNavbarSearch"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/search_button"
+        app:layout_constraintBottom_toBottomOf="@+id/btnNavbarApi"
+        app:layout_constraintEnd_toStartOf="@+id/btnNavbarApi"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnNavbarPersonalArea" />
+</androidx.constraintlayout.widget.ConstraintLayout>

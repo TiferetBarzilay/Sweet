@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoriesFragment"
+            app:destination="@id/categoriesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_personalAreaFragment"
+            app:destination="@id/personalAreaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.sweet.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.example.sweet.CategoriesFragment"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categoriesFragment_to_bakedCategoriesFragment"
+            app:destination="@id/bakedCategoriesFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_coldCategoryFragment"
+            app:destination="@id/coldCategoryFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_furCategoryFragment"
+            app:destination="@id/furCategoryFragment" />
+        <action
+            android:id="@+id/action_categoriesFragment_to_milkyCategoryFragment"
+            app:destination="@id/milkyCategoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalAreaFragment"
+        android:name="com.example.sweet.PersonalAreaFragment"
+        android:label="fragment_personal_area"
+        tools:layout="@layout/fragment_personal_area" >
+        <action
+            android:id="@+id/action_personalAreaFragment_to_favoritesPageFragment"
+            app:destination="@id/favoritesPageFragment" />
+        <action
+            android:id="@+id/action_personalAreaFragment_to_myPostsFragment"
+            app:destination="@id/myPostsFragment" />
+        <action
+            android:id="@+id/action_personalAreaFragment_to_editPersonalAreaFragment"
+            app:destination="@id/editPersonalAreaFragment" />
+        <action
+            android:id="@+id/action_personalAreaFragment_to_newPostUploadFragment"
+            app:destination="@id/newPostUploadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.example.sweet.PostFragment"
+        android:label="fragment_post"
+        tools:layout="@layout/fragment_post" />
+    <fragment
+        android:id="@+id/newPostUploadFragment"
+        android:name="com.example.sweet.NewPostUploadFragment"
+        android:label="fragment_new_post_upload"
+        tools:layout="@layout/fragment_new_post_upload" />
+    <fragment
+        android:id="@+id/editPersonalAreaFragment"
+        android:name="com.example.sweet.EditPersonalAreaFragment"
+        android:label="fragment_edit_personal_area"
+        tools:layout="@layout/fragment_edit_personal_area" />
+    <fragment
+        android:id="@+id/myPostsFragment"
+        android:name="com.example.sweet.MyPostsFragment"
+        android:label="fragment_my_posts"
+        tools:layout="@layout/fragment_my_posts" >
+        <action
+            android:id="@+id/action_myPostsFragment_to_postPageFragment"
+            app:destination="@id/postPageFragment" />
+        <action
+            android:id="@+id/action_myPostsFragment_to_editPostFragment"
+            app:destination="@id/editPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoritesPageFragment"
+        android:name="com.example.sweet.FavoritesPageFragment"
+        android:label="fragment_favorites_page"
+        tools:layout="@layout/fragment_favorites_page" />
+    <fragment
+        android:id="@+id/postPageFragment"
+        android:name="com.example.sweet.PostPageFragment"
+        android:label="fragment_post_page"
+        tools:layout="@layout/fragment_post_page" />
+    <fragment
+        android:id="@+id/editPostFragment"
+        android:name="com.example.sweet.EditPostFragment"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post" />
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.sweet.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.sweet.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bakedCategoriesFragment"
+        android:name="com.example.sweet.BakedCategoriesFragment"
+        android:label="fragment_baked_categories"
+        tools:layout="@layout/fragment_baked_categories" >
+        <action
+            android:id="@+id/action_bakedCategoriesFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coldCategoryFragment"
+        android:name="com.example.sweet.ColdCategoryFragment"
+        android:label="fragment_cold_category"
+        tools:layout="@layout/fragment_cold_category" >
+        <action
+            android:id="@+id/action_coldCategoryFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/furCategoryFragment"
+        android:name="com.example.sweet.FurCategoryFragment"
+        android:label="fragment_fur_category"
+        tools:layout="@layout/fragment_fur_category" >
+        <action
+            android:id="@+id/action_furCategoryFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/milkyCategoryFragment"
+        android:name="com.example.sweet.MilkyCategoryFragment"
+        android:label="fragment_milky_category"
+        tools:layout="@layout/fragment_milky_category" >
+        <action
+            android:id="@+id/action_milkyCategoryFragment_to_postFragment"
+            app:destination="@id/postFragment" />
+    </fragment>
+
+
+</navigation>
