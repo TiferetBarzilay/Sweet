@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-class BakedCategoriesFragment : Fragment() {
+class BakedCategoryFragment : Fragment() {
 
 
 
@@ -15,7 +15,7 @@ class BakedCategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_baked_categories, container, false)
+        return inflater.inflate(R.layout.fragment_baked_category, container, false)
 
     }
 }

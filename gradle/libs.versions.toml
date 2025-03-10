@@ -3,6 +3,7 @@ agp = "8.8.1"
 circleimageview = "3.1.0"
 constraintlayoutVersion = "2.1.4"
 googleMaterial = "1.10.0"
+googleMaterialVersion = "1.6.0"
 kotlin = "1.9.24"
 coreKtx = "1.15.0"
 junit = "4.13.2"
@@ -13,18 +14,20 @@ material = "1.12.0"
 activity = "1.10.0"
 constraintlayout = "2.2.0"
 materialVersion = "<version>"
-navigationFragmentktx = "2.8.8"
 navigationSafeArgsGradlePlugin = "2.8.8"
 navigationFragment = "2.8.8"
 
+navigationFragmentKtx = "2.8.8"
+navigationUiKtx = "2.8.8"
 
 
 [libraries]
-androidx-constraintlayout-v214 = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+
+
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-navigation-fragmentktx = { module = "androidx.navigation:navigation-fragmentktx", version.ref = "navigationFragmentktx" }
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
-androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragmentktx" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -34,6 +37,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 material-v1100 = { module = "com.google.android.material:material", version.ref = "googleMaterial" }
+material-v160 = { module = "com.google.android.material:material", version.ref = "googleMaterialVersion" }
 material-vversion = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version.ref = "navigationFragment" }
 

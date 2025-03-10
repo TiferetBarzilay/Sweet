@@ -6,31 +6,38 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sweet.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
-    private var buttonProfile: Button?=null
-    private var buttonRestAPI: Button?=null
-    private var buttonCategories: Button?=null
-    private var buttonHome: Button?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        buttonProfile=view?.findViewById(R.id.bottom_bar_profile_button)
-        buttonRestAPI=view?.findViewById(R.id.bottom_bar_restAPI_button)
-        buttonCategories=view?.findViewById(R.id.bottom_bar_categories_button)
-        buttonHome=view?.findViewById(R.id.bottom_bar_home_button)
+        val binding= FragmentHomeBinding.inflate(inflater,container,false)
 
 
-        buttonProfile?.setOnClickListener{
+
+
+
+      binding.rvHomeFragment.layoutManager = LinearLayoutManager(requireContext())
+        val recipeList=RecipeRepository.getRecipes()
+        val adapter=RecipeAdapter(recipeList){ recipe->
+
+          Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_postFragment)
 
         }
 
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding.rvHomeFragment.adapter=adapter
+
+
+
+
+        return binding.root
 
     }
 

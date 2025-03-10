@@ -12,5 +12,6 @@ data class Recipe(
     var categoryMilky: Boolean,
     var categoryFur: Boolean,
     var categoryCold: Boolean,
-    var categoryBacked: Boolean
+    var categoryBacked: Boolean,
+    var isFavorite:Boolean
  ) : Parcelable

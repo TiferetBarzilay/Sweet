@@ -2,8 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
 
-    id("androidx.navigation.safeargs.kotlin")
-
     id("kotlin-parcelize")
 }
 
@@ -54,9 +52,11 @@ dependencies {
     implementation(libs.circleimageview)
     implementation (libs.material.vversion)
 
-    implementation(libs.androidx.navigation.fragmentktx)
-    implementation(libs.androidx.navigation.ui)
-    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation (libs.material.v160)
+    implementation (libs.material.vversion)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
