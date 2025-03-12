@@ -9,16 +9,17 @@ import android.widget.Button
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.FragmentHomeBinding
+import com.example.sweet.databinding.FragmentLogInBinding
 
 class HomeFragment : Fragment() {
 
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding= FragmentHomeBinding.inflate(inflater,container,false)
-
+    ): View {
+       binding= FragmentHomeBinding.inflate(inflater,container,false)
 
 
 
@@ -40,8 +41,6 @@ class HomeFragment : Fragment() {
         return binding.root
 
     }
-
-
 
 
 }

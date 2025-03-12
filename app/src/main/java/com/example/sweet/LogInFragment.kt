@@ -7,17 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.sweet.databinding.FragmentLogInBinding
+import com.example.sweet.databinding.FragmentRegistrationBinding
 
 class LogInFragment : Fragment() {
 
+    private lateinit var binding: FragmentLogInBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val binding=FragmentLogInBinding.inflate(inflater, container, false)
 
-        return inflater.inflate(R.layout.fragment_fur_category, container, false)
+       binding=FragmentLogInBinding.inflate(inflater, container, false)
 
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val logInButton=binding.btnLoginFragment
+        logInButton.setOnClickListener{
+            findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
+        }
     }
 }

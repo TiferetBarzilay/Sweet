@@ -2,6 +2,7 @@
 agp = "8.8.1"
 circleimageview = "3.1.0"
 constraintlayoutVersion = "2.1.4"
+glide = "4.16.0"
 googleMaterial = "1.10.0"
 googleMaterialVersion = "1.6.0"
 kotlin = "1.9.24"
@@ -29,6 +30,8 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationSafeArgsGradlePlugin" }
 circleimageview = { module = "de.hdodenhof:circleimageview", version.ref = "circleimageview" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

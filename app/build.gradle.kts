@@ -57,6 +57,9 @@ dependencies {
 
     implementation (libs.material.v160)
     implementation (libs.material.vversion)
+    //עבור העלאת תמונה לאפליקציה:
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

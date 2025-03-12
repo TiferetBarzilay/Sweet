@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.navigation.findNavController  // ה-import של findNavController
-
+import androidx.navigation.ui.setupWithNavController
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     var navController: NavController?=null
     var navHostFragment: NavHostFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
@@ -54,7 +55,8 @@ class MainActivity : AppCompatActivity() {
 
 
 // קישור של ה-BottomNavigationView עם ה-NavController
-        navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
+        navController?.let { bottomNavigationView.setupWithNavController(it) }
+       // navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
 
 
 
@@ -80,12 +82,6 @@ class MainActivity : AppCompatActivity() {
             logoImageView.visibility = ImageView.GONE  // החבאת הלוגו
             fragmentContainerView.visibility = android.view.View.VISIBLE  // הצגת ה-FragmentContainerView
             bottomNavigationView.visibility= BottomNavigationView.VISIBLE//הצגת הנב בר
-
-
-            // ניווט ל-SweetAppFragment
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment
-            val navController = navHostFragment.navController
-            navController.navigate(R.id.sweetAppFragment)  // ניווט ל-Start Destination
         }, 2000)
 
 
@@ -93,11 +89,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    //פונקציה זו לא קיימת בפרוייקט של חוה!
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.menu,menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
+
+//    פונקציה זו לא קיימת בפרוייקט של חוה!
+//  עשינו בשיעור עם יהודה בשיעור 11
+   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+       menuInflater.inflate(R.menu.menu,menu)
+        return super.onCreateOptionsMenu(menu)
+   }
 
 
     override fun onResume() {

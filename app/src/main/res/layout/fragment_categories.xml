@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/btnMilkyCategoriesFragment"
+        android:id="@+id/btnMilky_CategoriesFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#40F2B0AF"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/btnColdCategoriesFragment"
+        android:id="@+id/btnCold_CategoriesFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#40F2B0AF"
@@ -80,7 +80,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <Button
-        android:id="@+id/btnFurCategoriesFragment"
+        android:id="@+id/btnFur_CategoriesFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#407E351F"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
     <Button
-        android:id="@+id/btnBakedCategoriesFragment"
+        android:id="@+id/btnBaked_CategoriesFragment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#407E351F"
