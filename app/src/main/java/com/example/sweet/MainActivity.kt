@@ -11,7 +11,10 @@ import androidx.core.view.WindowInsetsCompat
 
 import android.os.Handler
 import android.os.Looper
+import android.view.MenuItem
+import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toolbar
 import androidx.navigation.NavController
 //import androidx.navigation.NavController
 //import androidx.navigation.findNavController
@@ -38,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val toolbar=binding.toolbar
+        setSupportActionBar(toolbar)
+
 
         enableEdgeToEdge()
             // setContentView(R.layout.activity_main)
@@ -47,33 +53,56 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
-        //הגדרת ה navBaeBottom:
-        val bottomNavigationView = binding.mainActivityBottomView
         navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment
         navController = navHostFragment?.navController
+        // קישור של ה-BottomNavigationView עם ה-NavController
+        navController?.let {
+            NavigationUI.setupActionBarWithNavController(
+                activity = this,
+                navController = it
+            )
+        }
+
+        //הגדרת ה navBarBottom:
+        val bottomNavigationView: BottomNavigationView = findViewById(R.id.main_activity_bottom_view)
+        navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
 
 
-// קישור של ה-BottomNavigationView עם ה-NavController
-        navController?.let { bottomNavigationView.setupWithNavController(it) }
-       // navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
+        // הוספת OnDestinationChangedListener
+        navController?.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.sweetAppFragment, R.id.registrationFragment, R.id.logInFragment -> {
+                    bottomNavigationView.visibility =
+                        BottomNavigationView.GONE // הסתרת ה-BottomNavigationView
+                }
+
+                else -> {
+                    bottomNavigationView.visibility =
+                        BottomNavigationView.VISIBLE // הצגת ה-BottomNavigationView
+                }
+            }
+            when (destination.id) {
+                R.id.sweetAppFragment -> {
+                    toolbar.visibility = View.GONE // הסתרת ה-BottomNavigationView
+                }
+
+                else -> {
+                    toolbar.visibility = View.VISIBLE // הצגת ה-BottomNavigationView
+                }
+            }
+        }
 
 
 
-
-
-
-        val logoImageView = binding.imgLogoMainActivity
-        val fragmentContainerView = binding.mainNavHost
 
        // binding.recyclerView.layoutManager = LinearLayoutManager(this)
         //זה לא יעבוד כאן כי אין recyclerView ב-mainActivity
 
-
+        val logoImageView = binding.imgLogoMainActivity
+        val fragmentContainerView = binding.mainNavHost
 
         // הוסתרת ה-FragmentContainerView וה-bottomNavigationView בהתחלה
         fragmentContainerView.visibility = android.view.View.GONE
-        bottomNavigationView.visibility= BottomNavigationView.GONE
 
 
         // החבא את הלוגו לאחר 3 שניות והצג את ה-FragmentContainerView
@@ -81,21 +110,30 @@ class MainActivity : AppCompatActivity() {
 
             logoImageView.visibility = ImageView.GONE  // החבאת הלוגו
             fragmentContainerView.visibility = android.view.View.VISIBLE  // הצגת ה-FragmentContainerView
-            bottomNavigationView.visibility= BottomNavigationView.VISIBLE//הצגת הנב בר
         }, 2000)
-
-
 
 
     }
 
 
-//    פונקציה זו לא קיימת בפרוייקט של חוה!
-//  עשינו בשיעור עם יהודה בשיעור 11
-   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-       menuInflater.inflate(R.menu.menu,menu)
+
+//   פונקציה זו  לא קיימת בפרוייקט של חוה! עשינו בשיעור עם יהודה בשיעור 11 וזה בשביל הסרגל התחתון
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu,menu)
         return super.onCreateOptionsMenu(menu)
-   }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                navController?.navigateUp()
+                true
+            }
+            else -> navController?.let { NavigationUI.onNavDestinationSelected(item, it) } ?: super.onOptionsItemSelected(item)
+        }
+    }
+
 
 
     override fun onResume() {

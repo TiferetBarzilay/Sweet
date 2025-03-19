@@ -1,6 +1,5 @@
 package com.example.sweet
 
-import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -15,11 +14,10 @@ class PersonalAreaFragment : Fragment() {
 
     private lateinit var binding: FragmentPersonalAreaBinding
 
-    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
       binding=FragmentPersonalAreaBinding.inflate(inflater,container,false)
 
@@ -30,7 +28,7 @@ class PersonalAreaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setup()
+        setupUI()
 
         val editButton=binding.btnEditDetailsPersonalAreaFragment
         editButton.setOnClickListener {
@@ -56,7 +54,7 @@ class PersonalAreaFragment : Fragment() {
         }
     }
 
-    private fun setup() {
+    private fun setupUI() {
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Bundle>("data")
             ?.observe(viewLifecycleOwner) { bundle ->
                 bundle?.let {

@@ -33,11 +33,16 @@ class EditPersonalAreaFragment : Fragment() {
         binding=FragmentEditPersonalAreaBinding.inflate(inflater,container,false)
 
 
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupUI(view)
+    }
+
+    private fun setupUI(view: View){
 
         val saveButton=binding.btnSaveEditPersonalAreaFragment
         saveButton.setOnClickListener {
@@ -47,16 +52,15 @@ class EditPersonalAreaFragment : Fragment() {
                 putString("name", name)
                 putString("imageUri", imageUri?.toString())
             }
-
             Navigation.findNavController(view).previousBackStackEntry?.savedStateHandle?.set("data", bundle)
             Navigation.findNavController(view).popBackStack()
+
         }
 
         val addPhotoButton=binding.btnPlusEditPersonalAreaFragment
         addPhotoButton.setOnClickListener {
             getContent.launch("image/*")
         }
-
 
     }
 
