@@ -3,6 +3,10 @@ plugins {
     alias(libs.plugins.kotlin.android)
 
     id("kotlin-parcelize")
+
+
+    // Add the Google services Gradle plugin
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -57,11 +61,31 @@ dependencies {
 
     implementation (libs.material.v160)
     implementation (libs.material.vversion)
+
     //עבור העלאת תמונה לאפליקציה:
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+
+
+    // תלויות Firebase ו-Firestore
+    implementation(platform("com.google.firebase:firebase-bom:33.11.0"))
+    implementation(libs.firebase.auth.ktx) // Firebase Authentication
+    implementation(libs.firebase.firestore.ktx)// Firestore
+    implementation(libs.firebase.common.ktx)// Firebase Common
+
+    // פריווילגיות ל-firebase ן- firestore
+    implementation(libs.firebase.auth)
+    implementation(libs.firebase.analytics)
+
+    //שירותי גוגל
+    implementation(libs.play.services.auth)
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+    implementation(libs.play.services.base)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+apply(plugin = "com.google.gms.google-services")

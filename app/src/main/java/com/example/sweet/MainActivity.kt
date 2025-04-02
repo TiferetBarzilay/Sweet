@@ -11,20 +11,20 @@ import androidx.core.view.WindowInsetsCompat
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.Toolbar
 import androidx.navigation.NavController
-//import androidx.navigation.NavController
 //import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.findNavController  // ה-import של findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.firebase.FirebaseApp
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,6 +40,10 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+            FirebaseApp.initializeApp(this)
+            Log.d("FirebaseApp1","init")
+
 
         val toolbar=binding.toolbar
         setSupportActionBar(toolbar)
@@ -101,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         val logoImageView = binding.imgLogoMainActivity
         val fragmentContainerView = binding.mainNavHost
 
-        // הוסתרת ה-FragmentContainerView וה-bottomNavigationView בהתחלה
+        // הסתרת ה-FragmentContainerView וה-bottomNavigationView בהתחלה
         fragmentContainerView.visibility = android.view.View.GONE
 
 

@@ -40,8 +40,8 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:gravity="right"
+        android:hint="כתובת מייל"
         android:inputType="textEmailAddress"
-        android:text="כתובת מייל"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordRegistrationFragment" />
@@ -69,10 +69,11 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
+        android:hint="שם"
         android:inputType="text"
-        android:text="שם"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imLogoRegistrationFragment" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
