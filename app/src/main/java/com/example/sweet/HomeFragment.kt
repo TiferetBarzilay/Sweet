@@ -1,44 +1,59 @@
 package com.example.sweet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.FragmentHomeBinding
-import com.example.sweet.databinding.FragmentLogInBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var recipeAdapter: RecipeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-       binding= FragmentHomeBinding.inflate(inflater,container,false)
-
-
-
-
-      binding.rvHomeFragment.layoutManager = LinearLayoutManager(requireContext())
-        val recipeList=RecipeRepository.getRecipes()
-        val adapter=RecipeAdapter(recipeList){ recipe->
-
-          Navigation.findNavController(requireView()).navigate(R.id.action_homeFragment_to_postFragment)
-
-        }
-
-
-        binding.rvHomeFragment.adapter=adapter
-
-
+        binding= FragmentHomeBinding.inflate(inflater,container,false)
 
 
         return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recipeAdapter = RecipeAdapter(emptyList()) { recipe ->
+            // Handle item click here
+            Log.d("HomeFragment", "Recipe clicked: ${recipe.name}")
+
+            /*
+                            val bundle = Bundle().apply {
+                                putString("recipeId", recipe.id)  // שליחה של ה-ID של המתכון
+                                }
+                            // מעבר למסך המתכון
+                            findNavController().navigate(R.id.action_homeFragment_to_postFragment, bundle)
+
+             */
+        }
+
+        binding.rvHomeFragment.layoutManager = LinearLayoutManager(context)
+        binding.rvHomeFragment.adapter = recipeAdapter
+
+
+        RecipeRepository.getRecipes(
+            onSuccess = { recipes ->
+                recipeAdapter.submitList(recipes) // עדכון הרשימה במקום יצירה מחדש
+            },
+            onFailure = { exception ->
+                Log.e("HomeFragment", "Error getting recipes: ${exception.message}", exception)
+            }
+        )
 
     }
 

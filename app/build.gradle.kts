@@ -7,6 +7,8 @@ plugins {
 
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
+
+    id ("kotlin-kapt")
 }
 
 android {
@@ -65,6 +67,7 @@ dependencies {
     //עבור העלאת תמונה לאפליקציה:
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+    // kapt("com.github.bumptech.glide:compiler:4.13.0")
 
 
     // תלויות Firebase ו-Firestore
@@ -76,6 +79,10 @@ dependencies {
     // פריווילגיות ל-firebase ן- firestore
     implementation(libs.firebase.auth)
     implementation(libs.firebase.analytics)
+
+    // Firebase Storage
+    implementation(libs.firebase.storage.ktx)
+
 
     //שירותי גוגל
     implementation(libs.play.services.auth)

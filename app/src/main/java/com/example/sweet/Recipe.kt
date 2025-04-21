@@ -5,13 +5,14 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Recipe(
-    var name: String,
-    var preparationTime: String,
-    var ingredients: String,
-    var instructions: String,
-    var categoryMilky: Boolean,
-    var categoryFur: Boolean,
-    var categoryCold: Boolean,
-    var categoryBacked: Boolean,
-    var isFavorite:Boolean
+    var id: String="",
+    var name: String="",
+    var preparationTime: String="",
+    var ingredients: ArrayList<String> = arrayListOf(),
+    var instructions: String="",
+    var categoryMilky: Boolean=false,
+    var categoryFur: Boolean=false,
+    var categoryCold: Boolean=false,
+    var categoryBacked: Boolean=false,
+    var isFavorite:Boolean=false
  ) : Parcelable

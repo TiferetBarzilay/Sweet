@@ -10,16 +10,21 @@ import com.example.sweet.databinding.RecipeRowBinding
 //onItemClick - פונקציה שתתבצע כאשר לוחצים על פריט ברשימה.
 
 class RecipeAdapter(
-    private val recipesList: List<Recipe>,
+    private var recipesList: List<Recipe>,
     private val onItemClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
+    //מעדכנת את רשימה המתכונים כשהיא משתנה
+    fun submitList(newRecipes: List<Recipe>) {
+        recipesList = newRecipes
+        notifyDataSetChanged() // מעדכן את ה-RecyclerView
+    }
 
-//ב-bind() אתה מעדכן את רכיבי ה-UI עם המידע מתוך אובייקט ה-Recipe.
 
    inner class RecipeViewHolder(private val binding: RecipeRowBinding):
        RecyclerView.ViewHolder(binding.root)
    {
+       //ב-bind() אתה מעדכן את רכיבי ה-UI עם המידע מתוך אובייקט ה-Recipe
        fun bind(recipe: Recipe){
            binding.tvNameRecipeRow.text=recipe.name
            binding.btnAddToFavoritesRecipesPostFragment.isChecked = recipe.isFavorite

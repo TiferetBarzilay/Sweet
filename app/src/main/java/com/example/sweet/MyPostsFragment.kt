@@ -1,21 +1,50 @@
 package com.example.sweet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sweet.databinding.FragmentMyPostsBinding
 
 
 class MyPostsFragment : Fragment() {
-
-
+    private lateinit var binding: FragmentMyPostsBinding
+    private lateinit var myPostsAdapter: RecipeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_posts, container, false)
+        binding=FragmentMyPostsBinding.inflate(inflater,container, false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // יצירת האדפטור של המתכונים
+        myPostsAdapter= RecipeAdapter(emptyList()){recipe ->
+            // כאן יכול להיות טיפול בלחיצה על פריט
+            Log.d("ColdCategoryFragment", "Recipe clicked: ${recipe.name}")
+        }
+
+        // קישור ה-RecyclerView לאדפטור
+        binding.rvMyPostsFragment.layoutManager=LinearLayoutManager(context)
+        binding.rvMyPostsFragment.adapter=myPostsAdapter
+
+        // שליפת המתכונים מ-Firebase
+        RecipeRepository.getRecipes(
+            onSuccess = {recipes: List<Recipe> ->
+                myPostsAdapter.submitList(recipes)
+            },
+            onFailure = {exception ->
+                Log.e("SearchFragment", "Error getting recipes: ${exception.message}", exception)
+            }
+        )
+
     }
 }

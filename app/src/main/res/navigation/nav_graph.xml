@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_homeFragment_to_personalAreaFragment"
             app:destination="@id/personalAreaFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_restAPIFragment"
+            app:destination="@id/restAPIFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

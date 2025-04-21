@@ -1,53 +1,53 @@
 package com.example.sweet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sweet.databinding.FragmentFavoritesPageBinding
 
 
 class FavoritesPageFragment : Fragment()
 {
-
- var favoritesRecyclerView: RecyclerView?=null
+    private lateinit var binding: FragmentFavoritesPageBinding
+    private lateinit var favoritesPageAdapter: RecipeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites_page, container, false)
+        binding=FragmentFavoritesPageBinding.inflate(inflater,container,false)
+
+        return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupUI(view)
+
+        // יצירת האדפטור של המתכונים
+        favoritesPageAdapter= RecipeAdapter(emptyList()){recipe ->
+            // כאן יכול להיות טיפול בלחיצה על פריט
+            Log.d("ColdCategoryFragment", "Recipe clicked: ${recipe.name}")
+        }
+
+        // קישור ה-RecyclerView לאדפטור
+        binding.rvFavoritesPageFragment.layoutManager=LinearLayoutManager(context)
+        binding.rvFavoritesPageFragment.adapter=favoritesPageAdapter
+
+        // שליפת המתכונים מ-Firebase
+        RecipeRepository.getRecipes(
+            onSuccess = {recipes: List<Recipe> ->
+                favoritesPageAdapter.submitList(recipes)
+            },
+            onFailure = {exception ->
+                Log.e("SearchFragment", "Error getting recipes: ${exception.message}", exception)
+            }
+        )
+
+    }
+
 }
-
-    private fun setupUI(view: View)
-    {
-        favoritesRecyclerView=view.findViewById(R.id.rvFavoritesPageFragment)
-        favoritesRecyclerView?.setHasFixedSize(true)//משפר ביצועים
-    }
-
-
-    class FavoritesViewHolder(val itemView: View):RecyclerView.ViewHolder(itemView){
-
-    }
-    inner class FavoritesRecyclerAdapter:RecyclerView.Adapter<FavoritesViewHolder>()
-    {
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritesViewHolder {
-            TODO("Not yet implemented")
-        }
-
-        override fun getItemCount(): Int {
-            TODO("Not yet implemented")
-        }
-
-        override fun onBindViewHolder(holder: FavoritesViewHolder, position: Int) {
-            TODO("Not yet implemented")
-        }
-
-    }
-    }

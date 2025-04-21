@@ -1,25 +1,80 @@
 package com.example.sweet
 
-object RecipeRepository {
-    private val recipes = mutableListOf<Recipe>()
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-    fun addRecipe(recipe: Recipe) {
-        recipes.add(recipe)
+
+object RecipeRepository {
+    private val db = Firebase.firestore
+    //private val recipes = mutableListOf<Recipe>()
+
+    fun addRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
+        //recipes.add(recipe)
+        db.collection("recipes")
+            .add(recipe)
+            .addOnSuccessListener { documentReference ->
+                val recipeWithId = recipe.copy(id = documentReference.id)
+                updateRecipe(recipeWithId, onSuccess, onFailure)
+            }
+            .addOnFailureListener(onFailure)
     }
 
-    fun updateRecipe(recipe: Recipe) {
+    fun updateRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
       //  val index = recipes.indexOfFirst { it.id == recipe.id }
       //  if (index != -1) {
         //    recipe[index] = recipe
    //     }
+        db.collection("recipes")
+            .document(recipe.id)
+            .set(recipe)
+            .addOnSuccessListener(onSuccess)
+            .addOnFailureListener(onFailure)
     }
 
-    fun deleteRecipe(recipe: Recipe) {
+    fun deleteRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
       //  recipe.removeIf { it.id == recipe.id }
+        db.collection("recipes")
+            .document(recipe.id)
+            .delete()
+            .addOnSuccessListener(onSuccess)
+            .addOnFailureListener(onFailure)
+
     }
 
-    fun getRecipes(): List<Recipe> {
-        return recipes
+    fun getRecipes(onSuccess: (List<Recipe>) -> Unit, onFailure: (Exception) -> Unit) {
+        //return recipes
+        db.collection("recipes")
+            .get()
+            .addOnSuccessListener { result ->
+                val recipes = result.map { document ->
+                    document.toObject(Recipe::class.java).copy(id = document.id)
+                }
+                onSuccess(recipes)
+            }
+            .addOnFailureListener(onFailure)
     }
+/*
+    fun getRecipeById(recipeId: String, onSuccess: (Recipe) -> Unit, onFailure: (Exception) -> Unit) {
+        db.collection("recipes")
+            .document(recipeId)  // הגישה למסמך עם ה-ID של המתכון
+            .get()  // מבצע קריאה למסמך
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    // אם המסמך קיים, הופכים אותו לאובייקט Recipe ומחזירים אותו
+                    val recipe = document.toObject(Recipe::class.java)
+                    recipe?.let {
+                        onSuccess(it)  // מחזירים את המתכון בהצלחה
+                    }
+                } else {
+                    // אם המסמך לא קיים, מבצעים קריאה ל-onFailure
+                    onFailure(Exception("Recipe not found"))
+                }
+            }
+            .addOnFailureListener { exception ->
+                // אם יש שגיאה בזמן קריאה מ-Firebase
+                onFailure(exception)
+            }
+        }
+
+ */
 }
-//איך נדע לסמן מתכון? אין לו תעודת זהות

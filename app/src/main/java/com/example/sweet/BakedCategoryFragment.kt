@@ -1,6 +1,7 @@
 package com.example.sweet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class BakedCategoryFragment : Fragment() {
 
     private lateinit var binding: FragmentBakedCategoryBinding
-
+    private lateinit var bakedCategoryAdapter: RecipeAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,21 +24,30 @@ class BakedCategoryFragment : Fragment() {
        binding=FragmentBakedCategoryBinding.inflate(inflater,container,false)
 
 
-        binding.rvBackedCategoryFragment.layoutManager=LinearLayoutManager(requireContext())
+        return binding.root
+    }
 
-        val recipeList=RecipeRepository.getRecipes()
-        val adapter=RecipeAdapter(recipeList){ recipe->
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            Navigation.findNavController(requireView()).navigate(R.id.action_bakedCategoriesFragment_to_postFragment)
-
+        // יצירת האדפטור של המתכונים
+        bakedCategoryAdapter= RecipeAdapter(emptyList()){recipe ->
+            // כאן יכול להיות טיפול בלחיצה על פריט
+            Log.d("ColdCategoryFragment", "Recipe clicked: ${recipe.name}")
         }
 
+        // קישור ה-RecyclerView לאדפטור
+        binding.rvBackedCategoryFragment.layoutManager=LinearLayoutManager(context)
+        binding.rvBackedCategoryFragment.adapter=bakedCategoryAdapter
 
-        binding.rvBackedCategoryFragment.adapter=adapter
-
-
-        return binding.root
-
+        // שליפת המתכונים מ-Firebase
+        RecipeRepository.getRecipes(
+            onSuccess = {recipes: List<Recipe>->
+                bakedCategoryAdapter.submitList(recipes)
+            },
+            onFailure = {exception->
+                Log.e("SearchFragment", "Error getting recipes: ${exception.message}", exception)
+            })
 
     }
 
