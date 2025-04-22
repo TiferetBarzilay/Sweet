@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_homeFragment_to_restAPIFragment"
             app:destination="@id/restAPIFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_sweetAppFragment"
+            app:destination="@id/sweetAppFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFragment"

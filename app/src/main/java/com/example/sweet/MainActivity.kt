@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-
+/*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -138,6 +138,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+ */
+
 
 
     override fun onResume() {
@@ -147,5 +149,9 @@ class MainActivity : AppCompatActivity() {
         //אני חושבת שלא צריך להוסיף כאן יותר, חוה רצתה לעבור מעממוד הראשי לעמוד אחר, אבל אנחנו לא צריכות- יש לנו נביגציה כבר
        // binding.recyclerView.adapter = adapter
         //זה לא יעבוד כאן כי אין recyclerView ב-mainActivity
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController?.navigateUp() ?: super.onSupportNavigateUp()
     }
 }
