@@ -7,8 +7,6 @@
     tools:context=".PersonalAreaFragment">
 
 
-
-
     <ImageView
         android:id="@+id/ivUserPhotoPersonalAreaFragment"
         android:layout_width="185dp"
@@ -75,20 +73,17 @@
         app:layout_constraintStart_toEndOf="@+id/ivUserPhotoPersonalAreaFragment"
         app:layout_constraintTop_toTopOf="@+id/ivUserPhotoPersonalAreaFragment" />
 
-    <EditText
-        android:id="@+id/etUserNamePersonalAreaFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <TextView
+        android:id="@+id/tvUserNamePersonalAreaFragment"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
         android:layout_marginTop="71dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="שם משתמש"
+        android:text="שם משתמש:"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivUserPhotoPersonalAreaFragment" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

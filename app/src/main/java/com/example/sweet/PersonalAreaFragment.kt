@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.sweet.databinding.FragmentPersonalAreaBinding
@@ -54,22 +55,28 @@ class PersonalAreaFragment : Fragment() {
         }
     }
 
-    private fun setupUI() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Bundle>("data")
-            ?.observe(viewLifecycleOwner) { bundle ->
-                bundle?.let {
-                    val name = it.getString("name")
-                    val imageUriString = it.getString("imageUri")
-                    val imageUri = imageUriString?.let { Uri.parse(it) }
-                    onSavedClicked(name, imageUri)
-                }
-            }
+    // זה מוודא שהשם משתמש והתמונה החדשים ישתנו באופן מיידי לאחר סיום העריכה
+    override fun onResume() {
+        super.onResume()
+        setupUI()
     }
 
-    private fun onSavedClicked(name: String?, imageUri: Uri?) {
-        binding.etUserNamePersonalAreaFragment.setText(name)
+    private fun setupUI() {
+
+        // שליפת הנתונים מ-SharedPreferences
+        val sharedPreferences = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
+
+        val name = sharedPreferences.getString("name", " ")
+        val imageUriString = sharedPreferences.getString("imageUri", null)
+        val imageUri = imageUriString?.let { Uri.parse(it) }
+
+        // הצגת שם המשתמש
+        binding.tvUserNamePersonalAreaFragment.setText(name)
+
+        // הצגת התמונה אם קיימת
         imageUri?.let {
             Glide.with(this).load(it).into(binding.ivUserPhotoPersonalAreaFragment)
         }
+
     }
 }
