@@ -13,15 +13,22 @@ import com.example.sweet.databinding.FragmentPostBinding
 
 class PostFragment : Fragment() {
 
-    private var addToFavorites: ImageButton?=null
+    private lateinit var binding:FragmentPostBinding
+
+    private var addToFavoritesButton: ImageButton?=null
     private var isFavorite=false
+    private var recipeId: String? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var binding = FragmentPostBinding.inflate(inflater, container, false)
+        binding = FragmentPostBinding.inflate(inflater, container, false)
+
+        // קבלת ה-ID של המתכון מ-Bundle (אם יש)
+        recipeId = arguments?.getString("recipeId")
+
 
         /*
         // קבלת ה-ID של המתכון מ-Bundle
@@ -57,16 +64,16 @@ class PostFragment : Fragment() {
     private fun setupUI(view:View){
 
         //favorites button:
-        addToFavorites=view.findViewById(R.id.btnAddToFavoritesRecipesPostFragment)
+        addToFavoritesButton=view.findViewById(R.id.btnAddToFavoritesRecipesPostFragment)
 
-        addToFavorites?.setOnClickListener{
+        addToFavoritesButton?.setOnClickListener{
             isFavorite=!isFavorite
 
             if(isFavorite){
-                addToFavorites?.setImageResource(R.drawable.favorites_button) // כוכב מלא
+                addToFavoritesButton?.setImageResource(R.drawable.favorites_button) // כוכב מלא
             }
             else {
-                addToFavorites?.setImageResource(R.drawable.add_to_favorites_button)// כוכב ריק
+                addToFavoritesButton?.setImageResource(R.drawable.add_to_favorites_button)// כוכב ריק
             }
         }
 

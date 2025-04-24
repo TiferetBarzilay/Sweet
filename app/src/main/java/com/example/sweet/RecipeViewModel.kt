@@ -1,0 +1,48 @@
+package com.example.sweet
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
+
+//מטרתו להחזיק ולנהל נתונים בצורה אסינכרונית (ברקע) בלי שה־UI יקרוס או יאבד את המידע כשמשנים מסך, מסתובבים, וכו'
+
+class RecipeViewModel(application: Application) : AndroidViewModel(application) {
+    private val database = RecipeDatabase.getDatabase(application)
+    private val recipeDao = database.recipeDao()
+
+    val allRecipes: LiveData<List<Recipe>> = recipeDao.getAllRecipes().asLiveData()
+    val favoriteRecipes: LiveData<List<Recipe>> = recipeDao.getFavoriteRecipes().asLiveData()
+    val milkyRecipes: LiveData<List<Recipe>> = recipeDao.getMilkyRecipes().asLiveData()
+    val furRecipes: LiveData<List<Recipe>> = recipeDao.getFurRecipes().asLiveData()
+    val coldRecipes: LiveData<List<Recipe>> = recipeDao.getColdRecipes().asLiveData()
+    val bakedRecipes: LiveData<List<Recipe>> = recipeDao.getBakedRecipes().asLiveData()
+
+    fun getRecipeById(recipeId: String): Recipe? {
+        return recipeDao.getRecipeById(recipeId)
+    }
+
+    fun insertRecipe(recipe: Recipe) {
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeDao.insertRecipe(recipe)
+        }
+    }
+
+    fun updateRecipe(recipe: Recipe) {
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeDao.updateRecipe(recipe)
+        }
+    }
+
+    fun deleteRecipe(recipe: Recipe) {
+        viewModelScope.launch(Dispatchers.IO) {
+            recipeDao.deleteRecipe(recipe)
+        }
+    }
+
+    // אפשר להוסיף כאן עוד פונקציות לפי קטגוריות או חיפושים...
+}

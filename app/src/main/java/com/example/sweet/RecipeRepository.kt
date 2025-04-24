@@ -2,8 +2,37 @@ package com.example.sweet
 
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.Flow
+
+class RecipeRepository(private val recipeDao: RecipeDao) {
+
+    val allRecipes: Flow<List<Recipe>> = recipeDao.getAllRecipes()
+    val favoriteRecipes: Flow<List<Recipe>> = recipeDao.getFavoriteRecipes()
+
+    suspend fun insert(recipe: Recipe) {
+        recipeDao.insertRecipe(recipe)
+    }
+
+    suspend fun update(recipe: Recipe) {
+        recipeDao.updateRecipe(recipe)
+    }
+
+    suspend fun delete(recipe: Recipe) {
+        recipeDao.deleteRecipe(recipe)
+    }
+
+    suspend fun getById(id: String): Recipe? {
+        return recipeDao.getRecipeById(id)
+    }
+
+    fun getMilkyRecipes(): Flow<List<Recipe>> = recipeDao.getMilkyRecipes()
+    fun getFurRecipes(): Flow<List<Recipe>> = recipeDao.getFurRecipes()
+    fun getColdRecipes(): Flow<List<Recipe>> = recipeDao.getColdRecipes()
+    fun getBakedRecipes(): Flow<List<Recipe>> = recipeDao.getBakedRecipes()
+}
 
 
+/*
 object RecipeRepository {
     private val db = Firebase.firestore
     //private val recipes = mutableListOf<Recipe>()
@@ -53,28 +82,7 @@ object RecipeRepository {
             }
             .addOnFailureListener(onFailure)
     }
-/*
-    fun getRecipeById(recipeId: String, onSuccess: (Recipe) -> Unit, onFailure: (Exception) -> Unit) {
-        db.collection("recipes")
-            .document(recipeId)  // הגישה למסמך עם ה-ID של המתכון
-            .get()  // מבצע קריאה למסמך
-            .addOnSuccessListener { document ->
-                if (document.exists()) {
-                    // אם המסמך קיים, הופכים אותו לאובייקט Recipe ומחזירים אותו
-                    val recipe = document.toObject(Recipe::class.java)
-                    recipe?.let {
-                        onSuccess(it)  // מחזירים את המתכון בהצלחה
-                    }
-                } else {
-                    // אם המסמך לא קיים, מבצעים קריאה ל-onFailure
-                    onFailure(Exception("Recipe not found"))
-                }
-            }
-            .addOnFailureListener { exception ->
-                // אם יש שגיאה בזמן קריאה מ-Firebase
-                onFailure(exception)
-            }
-        }
+
+}
 
  */
-}

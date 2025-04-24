@@ -3,6 +3,7 @@ package com.example.sweet
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sweet.databinding.RecipeRowBinding
 
 //RecipeAdapter מקבל שני פרמטרים:
@@ -28,6 +29,12 @@ class RecipeAdapter(
        fun bind(recipe: Recipe){
            binding.tvNameRecipeRow.text=recipe.name
            binding.btnAddToFavoritesRecipesPostFragment.isChecked = recipe.isFavorite
+
+           // ✅ טען את התמונה מקישור ה-Imgur
+           Glide.with(binding.root.context)
+               .load(recipe.photograph) // הקישור ל-Imgur שנמצא בדאטה
+               .placeholder(R.drawable.cake) // תמונת ברירת מחדל (תכניסי אם יש לך)
+               .into(binding.ivRecipeRow)
 
            binding.root.setOnClickListener {
                onItemClick(recipe)

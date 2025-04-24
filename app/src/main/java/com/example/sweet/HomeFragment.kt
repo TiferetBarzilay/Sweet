@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.FragmentHomeBinding
@@ -16,17 +17,15 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var recipeAdapter: RecipeAdapter
+    private lateinit var viewModel: RecipeViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding= FragmentHomeBinding.inflate(inflater,container,false)
-
-
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,6 +33,9 @@ class HomeFragment : Fragment() {
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             showLogoutDialog()
         }
+
+        viewModel = ViewModelProvider(this)[RecipeViewModel::class.java]
+
         recipeAdapter = RecipeAdapter(emptyList()) { recipe ->
             // Handle item click here
             Log.d("HomeFragment", "Recipe clicked: ${recipe.name}")
@@ -51,16 +53,9 @@ class HomeFragment : Fragment() {
         binding.rvHomeFragment.layoutManager = LinearLayoutManager(context)
         binding.rvHomeFragment.adapter = recipeAdapter
 
-
-        RecipeRepository.getRecipes(
-            onSuccess = { recipes ->
-                recipeAdapter.submitList(recipes) // עדכון הרשימה במקום יצירה מחדש
-            },
-            onFailure = { exception ->
-                Log.e("HomeFragment", "Error getting recipes: ${exception.message}", exception)
-            }
-        )
-
+        //  כאן אנחנו מביאים את המתכונים מתוך הרשימה הקשיחה
+        val recipes = PrepopulatedRecipes.defaultRecipes
+        recipeAdapter.submitList(recipes)
     }
 
     private fun showLogoutDialog() {
@@ -73,7 +68,4 @@ class HomeFragment : Fragment() {
             .setNegativeButton("לא", null)
             .show()
     }
-
-
-
 }

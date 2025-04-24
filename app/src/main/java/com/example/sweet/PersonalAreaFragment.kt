@@ -18,7 +18,7 @@ class PersonalAreaFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
 
       binding=FragmentPersonalAreaBinding.inflate(inflater,container,false)
 
