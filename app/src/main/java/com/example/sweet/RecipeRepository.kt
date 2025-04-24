@@ -1,7 +1,7 @@
 package com.example.sweet
 
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.example.sweet.Dao.Recipe
+import com.example.sweet.Dao.RecipeDao
 import kotlinx.coroutines.flow.Flow
 
 class RecipeRepository(private val recipeDao: RecipeDao) {

@@ -1,4 +1,4 @@
-package com.example.sweet
+package com.example.sweet.Dao
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
@@ -32,6 +32,6 @@ interface RecipeDao {
     @Query("SELECT * FROM recipes WHERE categoryCold = 1")
     fun getColdRecipes(): Flow<List<Recipe>>
 
-    @Query("SELECT * FROM recipes WHERE categoryBacked = 1")
+    @Query("SELECT * FROM recipes WHERE categoryBaked = 1")
     fun getBakedRecipes(): Flow<List<Recipe>>
 } 

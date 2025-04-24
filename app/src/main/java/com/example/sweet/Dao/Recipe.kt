@@ -1,4 +1,4 @@
-package com.example.sweet
+package com.example.sweet.Dao
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -17,7 +17,7 @@ data class Recipe(
     var categoryMilky: Boolean = false,
     var categoryFur: Boolean = false,
     var categoryCold: Boolean = false,
-    var categoryBacked: Boolean = false,
+    var categoryBaked: Boolean = false,
     var isFavorite: Boolean = false,
     var photograph: String = "" // ✅ כאן שמים את הקישור ל-Imgur
 ) : Parcelable

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.RecipeRowBinding
 
 //RecipeAdapter מקבל שני פרמטרים:

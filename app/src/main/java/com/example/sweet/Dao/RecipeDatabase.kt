@@ -1,4 +1,4 @@
-package com.example.sweet
+package com.example.sweet.Dao
 
 import android.content.Context
 import androidx.room.Database
