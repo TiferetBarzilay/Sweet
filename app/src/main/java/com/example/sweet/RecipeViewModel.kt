@@ -15,6 +15,8 @@ import kotlinx.coroutines.launch
 class RecipeViewModel(application: Application) : AndroidViewModel(application) {
     private val database = RecipeDatabase.getDatabase(application)
     private val recipeDao = database.recipeDao()
+   // private val repository = RecipeRepository(recipeDao)
+
 
     val allRecipes: LiveData<List<Recipe>> = recipeDao.getAllRecipes().asLiveData()
     val favoriteRecipes: LiveData<List<Recipe>> = recipeDao.getFavoriteRecipes().asLiveData()
@@ -23,9 +25,12 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application) 
     val coldRecipes: LiveData<List<Recipe>> = recipeDao.getColdRecipes().asLiveData()
     val bakedRecipes: LiveData<List<Recipe>> = recipeDao.getBakedRecipes().asLiveData()
 
-    fun getRecipeById(recipeId: String): Recipe? {
-        return recipeDao.getRecipeById(recipeId)
+    /*
+    fun getRecipeById(recipeId: String): LiveData<Recipe?> {
+       return repository.getById(recipeId)
     }
+
+     */
 
     fun insertRecipe(recipe: Recipe) {
         viewModelScope.launch(Dispatchers.IO) {
