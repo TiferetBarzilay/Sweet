@@ -1,5 +1,6 @@
 package com.example.sweet
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.sweet.Dao.Recipe
@@ -55,7 +57,18 @@ class PostFragment : Fragment() {
                 addToFavoritesButton?.setImageResource(R.drawable.add_to_favorites_button)// כוכב ריק
             }
         }
+
+        // שליפת הנתונים מ-SharedPreferences
+        val sharedPreferences = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
+
+        val imageUriString = sharedPreferences.getString("imageUri", null)
+        val imageUri = imageUriString?.let { Uri.parse(it) }
+        // הצגת התמונה אם קיימת
+        imageUri?.let {
+            Glide.with(this).load(it).into(binding.ivPostFragment)
         }
+
+    }
 
     }
 
