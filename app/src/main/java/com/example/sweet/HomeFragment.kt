@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.FragmentHomeBinding
@@ -31,7 +32,11 @@ class HomeFragment : Fragment() {
 
         recipeAdapter = RecipeAdapter(emptyList()) { recipe ->
             // Handle item click here
-            Log.d("HomeFragment", "Recipe clicked: ${recipe.name}")
+            Toast.makeText(requireContext(), "נלחץ: ${recipe.name}", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle().apply {
+                putParcelable("recipe", recipe)
+            }
+            findNavController().navigate(R.id.action_homeFragment_to_postFragment, bundle)
 
         }
 

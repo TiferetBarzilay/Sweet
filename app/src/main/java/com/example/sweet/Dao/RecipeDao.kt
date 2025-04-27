@@ -21,8 +21,6 @@ interface RecipeDao {
     @Delete
     fun deleteRecipe(recipe: Recipe): Int
 
-    @Query("SELECT * FROM recipes WHERE isFavorite = 1")
-    fun getFavoriteRecipes(): Flow<List<Recipe>>
 
     @Query("SELECT * FROM recipes WHERE categoryMilky = 1")
     fun getMilkyRecipes(): Flow<List<Recipe>>

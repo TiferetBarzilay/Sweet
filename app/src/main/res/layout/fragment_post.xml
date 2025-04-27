@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".PostFragment">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp">
 
     <ImageView
         android:id="@+id/ivPostFragment"
@@ -105,22 +111,5 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAddToFavoritesRecipesPostFragment"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="56dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:backgroundTint="@color/white"
-        app:cornerRadius="360dp"
-        app:icon="@drawable/add_to_favorites_button"
-        app:iconGravity="textStart"
-        app:iconPadding="0dp"
-        app:iconSize="32dp"
-        app:iconTint="@null"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPostFragment"
-        app:layout_constraintEnd_toEndOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

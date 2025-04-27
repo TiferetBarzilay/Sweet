@@ -118,7 +118,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "העוגה נשמרת בקופסא אטומה בטמפרטורת החדר במשך כ- 4 ימים.",
             categoryFur = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/GFReO1w.jpeg"
         ),
         Recipe(
@@ -166,7 +165,6 @@ object PrepopulatedRecipes {
                     "09.\n" +
                     "אופים בתנור שחומם מראש לטורבו, 190 מעלות בערך 30 דק׳",
             categoryMilky = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/4WkODWR.jpeg"
         ),
         Recipe(
@@ -219,7 +217,6 @@ object PrepopulatedRecipes {
                     "6\n" +
                     "לאפות בתנור שחומם מראש עד שהדפנות יציבות והמרכז רוטט (ראו מידע נוסף). להוציא מהתנור, לצנן מעט, לפדר באבקת סוכר, להגיש עם כדור גלידה בצד ואתם בחלום!\n",
             categoryMilky = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/HXeZYv2.jpeg"
         ),
         Recipe(
@@ -285,7 +282,6 @@ object PrepopulatedRecipes {
                     "6\n" +
                     "בתיאבון",
             categoryFur = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/5PQIvjf.jpeg"
         ),
         Recipe(
@@ -430,7 +426,6 @@ object PrepopulatedRecipes {
                     "בתאבון!",
             categoryCold = true,
             categoryMilky = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/dwwx5jK.jpeg"
         ),
         Recipe(
@@ -457,7 +452,6 @@ object PrepopulatedRecipes {
                     "מצננים מעט בטמפרטורת החדר ומגישים.",
             categoryMilky = true,
             categoryBaked = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/IN1c3I8.jpeg"
         ),
         Recipe(
@@ -493,7 +487,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "-מכניסים לתנור (חשוב שהתנור יהיה חם!) ואופים במשך 5-9 דקות עד להזהבה מאוד קלה.",
             categoryBaked = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/UYp0WDE.jpeg"
         ),
         Recipe(
@@ -657,7 +650,6 @@ object PrepopulatedRecipes {
                     "אם אתם בעניין של שחיתות - ניתן להזריק ממרח שוקולד לקרואסון לאחר האפייה. עושים חריץ קטן בתחתית הקרואסון, מעבירים את ממרח השוקולד לשקית זילוף, וממלאים את הקרואסון דרך החריץ שיצרנו בעזרת השקית זילוף.",
             categoryMilky = true,
             categoryBaked = true,
-            isFavorite = true,
             photograph = "https://i.imgur.com/Mf6XfGe.jpeg"
         ),
         Recipe(

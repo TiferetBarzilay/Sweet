@@ -16,20 +16,31 @@ class RecipeAdapter(
     private val onItemClick: (Recipe) -> Unit
 ) : RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder>() {
 
-    //מעדכנת את רשימה המתכונים כשהיא משתנה
-    fun submitList(newRecipes: List<Recipe>) {
-        recipesList = newRecipes
-        notifyDataSetChanged() // מעדכן את ה-RecyclerView
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
+        val binding=RecipeRowBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
+        return RecipeViewHolder(binding, onItemClick)
+
     }
 
+    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
+        val recipe= recipesList[position]
+        holder.bind(recipe)
+    }
 
-   inner class RecipeViewHolder(private val binding: RecipeRowBinding):
+    override fun getItemCount(): Int = recipesList.size
+
+
+    class RecipeViewHolder(private val binding: RecipeRowBinding,
+                                private val onItemClick: (Recipe) -> Unit):
        RecyclerView.ViewHolder(binding.root)
    {
        //ב-bind() אתה מעדכן את רכיבי ה-UI עם המידע מתוך אובייקט ה-Recipe
        fun bind(recipe: Recipe){
            binding.tvNameRecipeRow.text=recipe.name
-           binding.btnAddToFavoritesRecipesPostFragment.isChecked = recipe.isFavorite
 
            // ✅ טען את התמונה מקישור ה-Imgur
            Glide.with(binding.root.context)
@@ -43,23 +54,11 @@ class RecipeAdapter(
        }
     }
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder {
-        val binding=RecipeRowBinding.inflate(
-            LayoutInflater.from(parent.context),
-            parent,
-            false
-        )
-        return RecipeViewHolder(binding)
-
+    //מעדכנת את רשימה המתכונים כשהיא משתנה
+    fun submitList(newRecipes: List<Recipe>) {
+        recipesList = newRecipes
+        notifyDataSetChanged() // מעדכן את ה-RecyclerView
     }
-
-
-    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int) {
-        holder.bind(recipesList[position])
-    }
-
-    override fun getItemCount(): Int = recipesList.size
 
 
 }

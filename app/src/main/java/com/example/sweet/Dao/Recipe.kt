@@ -18,6 +18,5 @@ data class Recipe(
     var categoryFur: Boolean = false,
     var categoryCold: Boolean = false,
     var categoryBaked: Boolean = false,
-    var isFavorite: Boolean = false,
     var photograph: String = "" // ✅ כאן שמים את הקישור ל-Imgur
 ) : Parcelable
