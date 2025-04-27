@@ -8,22 +8,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.Toolbar
 import androidx.navigation.NavController
-//import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.navigation.ui.setupWithNavController
 import com.google.firebase.FirebaseApp
 
 
@@ -76,31 +69,33 @@ class MainActivity : AppCompatActivity() {
         navController?.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.sweetAppFragment, R.id.registrationFragment, R.id.logInFragment -> {
-                    bottomNavigationView.visibility =
-                        BottomNavigationView.GONE // הסתרת ה-BottomNavigationView
+                    bottomNavigationView.visibility = BottomNavigationView.GONE
                 }
-
                 else -> {
-                    bottomNavigationView.visibility =
-                        BottomNavigationView.VISIBLE // הצגת ה-BottomNavigationView
+                    bottomNavigationView.visibility = BottomNavigationView.VISIBLE
                 }
             }
             when (destination.id) {
                 R.id.sweetAppFragment -> {
-                    toolbar.visibility = View.GONE // הסתרת ה-BottomNavigationView
+                    toolbar.visibility = View.GONE
                 }
-
                 else -> {
-                    toolbar.visibility = View.VISIBLE // הצגת ה-BottomNavigationView
+                    toolbar.visibility = View.VISIBLE
+                }
+            }
+            
+            // מסתיר את החץ חזור בפרגמטים ספציפיים
+            when (destination.id) {
+                R.id.homeFragment, R.id.personalAreaFragment, R.id.restAPIFragment -> {
+                    supportActionBar?.setDisplayHomeAsUpEnabled(false)
+                }
+                else -> {
+                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
                 }
             }
         }
 
 
-
-
-       // binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        //זה לא יעבוד כאן כי אין recyclerView ב-mainActivity
 
         val logoImageView = binding.imgLogoMainActivity
         val fragmentContainerView = binding.mainNavHost
@@ -127,28 +122,10 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
-/*
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                navController?.navigateUp()
-                true
-            }
-            else -> navController?.let { NavigationUI.onNavDestinationSelected(item, it) } ?: super.onOptionsItemSelected(item)
-        }
-    }
-
- */
-
-
 
     override fun onResume() {
         super.onResume()
 
-//יש לסיים!
-        //אני חושבת שלא צריך להוסיף כאן יותר, חוה רצתה לעבור מעממוד הראשי לעמוד אחר, אבל אנחנו לא צריכות- יש לנו נביגציה כבר
-       // binding.recyclerView.adapter = adapter
-        //זה לא יעבוד כאן כי אין recyclerView ב-mainActivity
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -10,15 +10,6 @@
         android:name="com.example.sweet.HomeFragment"
         android:label="עמוד הבית"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/searchFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="false" />
 
         <action
             android:id="@+id/action_homeFragment_to_postFragment"
@@ -34,39 +25,6 @@
             app:destination="@id/sweetAppFragment" />
     </fragment>
     <fragment
-        android:id="@+id/searchFragment"
-        android:name="com.example.sweet.SearchFragment"
-        android:label="חיפוש"
-        tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_searchFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-        <action
-            android:id="@+id/action_searchFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="false" />
-    </fragment>
-    <fragment
-        android:id="@+id/categoriesFragment"
-        android:name="com.example.sweet.CategoriesFragment"
-        android:label="עמוד קטגוריות"
-        tools:layout="@layout/fragment_categories">
-        <action
-            android:id="@+id/action_categoriesFragment_to_bakedCategoriesFragment"
-            app:destination="@id/bakedCategoriesFragment" />
-        <action
-            android:id="@+id/action_categoriesFragment_to_coldCategoryFragment"
-            app:destination="@id/coldCategoryFragment" />
-        <action
-            android:id="@+id/action_categoriesFragment_to_furCategoryFragment"
-            app:destination="@id/furCategoryFragment" />
-        <action
-            android:id="@+id/action_categoriesFragment_to_milkyCategoryFragment"
-            app:destination="@id/milkyCategoryFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/personalAreaFragment"
         android:name="com.example.sweet.PersonalAreaFragment"
         android:label="איזור אישי"
@@ -80,12 +38,6 @@
         <action
             android:id="@+id/action_personalAreaFragment_to_newPostUploadFragment"
             app:destination="@id/newPostUploadFragment" />
-        <action
-            android:id="@+id/action_personalAreaFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_personalAreaFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
@@ -147,42 +99,6 @@
             app:destination="@id/logInFragment" />
     </fragment>
     <fragment
-        android:id="@+id/bakedCategoriesFragment"
-        android:name="com.example.sweet.BakedCategoryFragment"
-        android:label="מתכונים אפויים"
-        tools:layout="@layout/fragment_baked_category">
-        <action
-            android:id="@+id/action_bakedCategoriesFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/coldCategoryFragment"
-        android:name="com.example.sweet.ColdCategoryFragment"
-        android:label="מתכונים קרים"
-        tools:layout="@layout/fragment_cold_category">
-        <action
-            android:id="@+id/action_coldCategoryFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/furCategoryFragment"
-        android:name="com.example.sweet.FurCategoryFragment"
-        android:label="מתכונים פרווה"
-        tools:layout="@layout/fragment_fur_category">
-        <action
-            android:id="@+id/action_furCategoryFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/milkyCategoryFragment"
-        android:name="com.example.sweet.MilkyCategoryFragment"
-        android:label="מתכונים חלביים"
-        tools:layout="@layout/fragment_milky_category">
-        <action
-            android:id="@+id/action_milkyCategoryFragment_to_postFragment"
-            app:destination="@id/postFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/sweetAppFragment"
         android:name="com.example.sweet.SweetAppFragment"
         android:label="מתוק לי"
@@ -198,14 +114,7 @@
         android:id="@+id/restAPIFragment"
         android:name="com.example.sweet.RestAPIFragment"
         android:label="TheMealDB"
-        tools:layout="@layout/fragment_rest_a_p_i">
-        <action
-            android:id="@+id/action_restAPIFragment_to_categoriesFragment"
-            app:destination="@id/categoriesFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="false" />
-    </fragment>
+        tools:layout="@layout/fragment_rest_a_p_i"/>
 
 
 </navigation>

@@ -69,10 +69,6 @@ class NewPostUploadFragment : Fragment() {
             instructions = instructions,
             preparationTime = preparationTime,
             photograph = imageUri?.toString() ?: "",
-            categoryMilky = binding.cbMilkyNewPostUploadFragment.isChecked,
-            categoryFur = binding.cbFurNewPostUploadFragment.isChecked,
-            categoryCold = binding.cbColdNewPostUploadFragment.isChecked,
-            categoryBaked = binding.cbBakedNewPostUploadFragment.isChecked
         )
 
         // שמירה ב- Firebase

@@ -14,9 +14,5 @@ data class Recipe(
     var preparationTime: String = "",
     var ingredients: String = "",
     var instructions: String = "",
-    var categoryMilky: Boolean = false,
-    var categoryFur: Boolean = false,
-    var categoryCold: Boolean = false,
-    var categoryBaked: Boolean = false,
     var photograph: String = "" // ✅ כאן שמים את הקישור ל-Imgur
 ) : Parcelable

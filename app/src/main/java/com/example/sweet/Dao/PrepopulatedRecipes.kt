@@ -28,7 +28,6 @@ object PrepopulatedRecipes {
                     "למזוג בתבנית האפייה של התנור מים רותחים ליצירת סביבת אפייה לחה (\"אמבט מים\" - כחצי מגובה הקעריות), להניח את תבניות האפייה בתוך המים (לוודא שהן אטומות) ולאפות בתנור שחומם מראש למשך כ- 40 דקות (תלוי בסוג התנור).\n" +
                     "6\n" +
                     "להוציא מהתנור, לכסות במכסה או בניילון נצמד ולהקפיא במקום להכניס למקרר - כך למעשה מכינים קרם ברולה קפוא מושלם במרקם של גלידה (ניתן כמובן גם להכניס למקרר כמו בגרסא הרגילה). בטרם ההגשה להוציא מהמקפיא, להמתין כמה דקות, לפזר את הסוכר מעל ולקרמל בעזרת ברנר.",
-            categoryMilky = true,
             photograph = "https://i.imgur.com/ImvIBNp.jpeg"
         ),
         Recipe(
@@ -67,7 +66,6 @@ object PrepopulatedRecipes {
                     "מקציפים את השמנת המתוקה הנוספת של שכבת הקצפת עד לקבלת מרקם קצפת אוורירי, ומורחים בעדינות מעל שכבת קרם הקפה.\n" +
                     "6\n" +
                     "מכסים את העוגה ומכניסים למקרר להרבה שעות - בגדול עדיף להכין פשוט יום לפני שמגישים. מוציאים מהמקרר ממש לפני הגשה ומפזרים אבקת קקאו/שוקולד מגורד מעל. מתקבלת עוגת נוטלה וקפה פשוט מושלמת!\n",
-            categoryMilky = true,
             photograph = "https://i.imgur.com/ImvIBNp.jpeg"
         ),
         Recipe(
@@ -117,7 +115,6 @@ object PrepopulatedRecipes {
                     " \n" +
                     "\n" +
                     "העוגה נשמרת בקופסא אטומה בטמפרטורת החדר במשך כ- 4 ימים.",
-            categoryFur = true,
             photograph = "https://i.imgur.com/GFReO1w.jpeg"
         ),
         Recipe(
@@ -164,7 +161,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "09.\n" +
                     "אופים בתנור שחומם מראש לטורבו, 190 מעלות בערך 30 דק׳",
-            categoryMilky = true,
             photograph = "https://i.imgur.com/4WkODWR.jpeg"
         ),
         Recipe(
@@ -185,7 +181,6 @@ object PrepopulatedRecipes {
                     "מוציאים מהתנור, מצננים ומכניסים למקרר ל- 4 שעות לפחות. שימו לב: לאחר האפייה העוגה נשארת עדיין רוטטת ונדמה שנוזלית מדי - אל חשש, היא מתייצבת במקרר. מתקבלת עוגת גבינה באסקית פשוט מושלמת שלא תוכלו להפסיק להתענג עליה!\n" +
                     "5\n" +
                     "בתיאבון",
-            categoryMilky = true,
             photograph = "https://i.imgur.com/kdpzsth.jpeg"
         ),
         Recipe(
@@ -216,7 +211,6 @@ object PrepopulatedRecipes {
                     "להעביר לכלי ההגשה (ניתן כלי סופלה/רינג/מנג`טים או כל כלי שתבחרו. חשוב לשים לב ולשמן היטב - מומלץ למרוח בחמאה את הדפנות ואפילו לפזר שכבה דקה של סוכר כדי להצליח לחלץ.\n" +
                     "6\n" +
                     "לאפות בתנור שחומם מראש עד שהדפנות יציבות והמרכז רוטט (ראו מידע נוסף). להוציא מהתנור, לצנן מעט, לפדר באבקת סוכר, להגיש עם כדור גלידה בצד ואתם בחלום!\n",
-            categoryMilky = true,
             photograph = "https://i.imgur.com/HXeZYv2.jpeg"
         ),
         Recipe(
@@ -248,7 +242,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "הפעל טיימר (30 דק’)\n" +
                     "-כשהעוגה מוכנה וחמה –מזליפים מעל סירופ מייפל.",
-            categoryFur = true,
             photograph = "https://i.imgur.com/CcC8YiY.jpeg"
         ),
         Recipe(
@@ -281,7 +274,6 @@ object PrepopulatedRecipes {
                     "לאפות את העוגיות בחום של 170 מעלות למשך כ- 15-20 דקות עד להזהבה. להמתין עד לקירור ולהתענג על עוגיות פיצוחים קלות וטעימות!\n" +
                     "6\n" +
                     "בתיאבון",
-            categoryFur = true,
             photograph = "https://i.imgur.com/5PQIvjf.jpeg"
         ),
         Recipe(
@@ -302,7 +294,6 @@ object PrepopulatedRecipes {
                     "מוציאים את תערובת השוקולד המריר מהמקרר לתוך קערת מיקסר. מוסיפים כוס שמנת להקצפה, מערבבים היטב ומקציפים לקבלת קרם. יוצקים את הקרם לתחתית של כוסות הגשה, מניחים אותן באלכסון בתבנית מאפינס ומכניסים למקרר להתייצבות למשך שעה-שעתיים.\n" +
                     "לאחר שהקרם התייצב, מכניסים לקערה את השוקולד הלבן עם גרגירים ממקל וניל וחצי כוס של שמנת ומקציפים ביחד לקרם יציב. יוצקים לתוך הכוסות מעל השוקולד המריר ומשאירים כ-4 שעות להתייצבות.\n" +
                     "מקשטים מלמעלה בשבבי שוקולד או בפניני שוקולד ומגישים קר.",
-            categoryCold = true,
             photograph = "https://i.imgur.com/B91Z4F6.jpeg"
         ),
         Recipe(
@@ -339,8 +330,6 @@ object PrepopulatedRecipes {
                     "מניחים מלבן בצק עלים על משטח עבודה. מורחים את הקרם ומניחים מעל עוד עלה, מאבקים באבקת סוכר.\n" +
                     "שלב 7\n" +
                     "מצננים היטב ופורסים למנות.",
-            categoryCold = true,
-            categoryMilky = true,
             photograph = "https://i.imgur.com/TrKqr3k.jpeg"
         ),
         Recipe(
@@ -377,8 +366,6 @@ object PrepopulatedRecipes {
                     "יוצקים את תערובת המלית על תחתית העוגה.\n" +
                     "2\n" +
                     "מפוררים את שארית הבצק שאפינו מעל, ולאחר מכן מעבירים למקרר להתייצבות של 4 שעות לפחות. מתקבלת עוגת גבינה פירורים קרה מושלמת וקלה להכנה!",
-            categoryMilky = true,
-            categoryCold = true,
             photograph = "https://i.imgur.com/Gt8g44S.jpeg"
         ),
         Recipe(
@@ -424,8 +411,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "07.\n" +
                     "בתאבון!",
-            categoryCold = true,
-            categoryMilky = true,
             photograph = "https://i.imgur.com/dwwx5jK.jpeg"
         ),
         Recipe(
@@ -450,8 +435,6 @@ object PrepopulatedRecipes {
                     "יוצרים 10-12 עיגולים מהבצק ומניחים במרווחים על גבי תבנית תנור מרופדת בנייר אפייה. מקשטים את החלק העליון בעוד קצת שוקולד.\n" +
                     "אופים במשך 12-17 דקות או עד שהעוגיות תופחות ומזהיבות. אם מכינים עוגיות קטנות יותר, זמן האפייה מתקצר.\n" +
                     "מצננים מעט בטמפרטורת החדר ומגישים.",
-            categoryMilky = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/IN1c3I8.jpeg"
         ),
         Recipe(
@@ -486,7 +469,6 @@ object PrepopulatedRecipes {
                     "-חותכים לפרוסות בעובי כ-2 ס”מ ומניחים במרווחים על נייר אפיה.\n" +
                     "\n" +
                     "-מכניסים לתנור (חשוב שהתנור יהיה חם!) ואופים במשך 5-9 דקות עד להזהבה מאוד קלה.",
-            categoryBaked = true,
             photograph = "https://i.imgur.com/UYp0WDE.jpeg"
         ),
         Recipe(
@@ -524,8 +506,6 @@ object PrepopulatedRecipes {
                     "-כשהעוגה מוכנה, מזלפים מעליה בעזרת כפית את הזיגוג ועוטפים בניילון נצמד.\n" +
                     "\n" +
                     "*ניתן להכפיל את כל הכמויות ב-2 ולהכין בתבנית מלבנית בגודל 22X31. זמן האפיה עשוי להתארך ל 40-45 דקות.",
-            categoryFur = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/a0hIKYX.jpeg"
         ),
         Recipe(
@@ -566,7 +546,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "7\n" +
                     "טובלים את העוגיות בסירופ ומצפים בשומשום.",
-            categoryFur = true,
             photograph = "https://i.imgur.com/BfHRXMo.jpeg"
         ),
         Recipe(
@@ -595,8 +574,6 @@ object PrepopulatedRecipes {
                     "*אפשר להוסיף במקום השוקולד, 1/2 כוס חמוציות או פקאן סיני קצוץ או אגוזי מלך קצוצים\n" +
                     "\n" +
                     "בתיאבון",
-            categoryFur = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/hyE1d2e.jpeg"
         ),
         Recipe(
@@ -648,8 +625,6 @@ object PrepopulatedRecipes {
                     "הפעלת טיימר 25 דקות\n" +
                     "13.\n" +
                     "אם אתם בעניין של שחיתות - ניתן להזריק ממרח שוקולד לקרואסון לאחר האפייה. עושים חריץ קטן בתחתית הקרואסון, מעבירים את ממרח השוקולד לשקית זילוף, וממלאים את הקרואסון דרך החריץ שיצרנו בעזרת השקית זילוף.",
-            categoryMilky = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/Mf6XfGe.jpeg"
         ),
         Recipe(
@@ -700,8 +675,6 @@ object PrepopulatedRecipes {
                     "\n" +
                     "9\n" +
                     "מוציאים את הקראנצים מהתנור ומברישים בסירופ בעודם חמים (הסירופ צריך להיות קר). עוגת השמרים שוקולד תישמר מחוץ למקרר עד 3 ימים.",
-            categoryMilky = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/mFW1K76.jpeg"
         ),
         Recipe(
@@ -737,8 +710,6 @@ object PrepopulatedRecipes {
                     "-בינתיים מכינים את הציפוי: ממיסים את קוביות השוקולד עם כפית טחינה גולמית וכף שמן ומערבבים לתערובת חלקה.\n" +
                     "\n" +
                     "-כשהמאפינס מוכנים שמים מעל את הציפוי.",
-            categoryFur = true,
-            categoryBaked = true,
             photograph = "https://i.imgur.com/2IbYGy0.jpeg"
         )
     )

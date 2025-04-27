@@ -7,18 +7,9 @@
         android:title="Profile"/>
 
     <item
-        android:id="@+id/searchFragment"
-        android:icon="@drawable/icons8_search"
-        android:title="Search" />
-
-    <item
         android:id="@+id/restAPIFragment"
         android:icon="@drawable/computer_svgrepo_com"
         android:title="Rest API" />
-    <item
-        android:id="@+id/categoriesFragment"
-        android:icon="@drawable/category_list_svgrepo_com"
-        android:title="Categories" />
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/home_svgrepo_com"

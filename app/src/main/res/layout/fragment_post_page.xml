@@ -7,7 +7,7 @@
     android:fillViewport="true"
     tools:context=".PostPageFragment">
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="16dp">
@@ -129,89 +129,5 @@
         app:layout_constraintTop_toTopOf="@+id/ivPostPhotoPostPageFragment" />
 
 
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:text="קטגוריות:"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInstructionsPostPageFragment" />
-
-    <CheckBox
-        android:id="@+id/cbMilkyPostPageFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <CheckBox
-        android:id="@+id/cbFurPostPageFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cbMilkyPostPageFragment" />
-
-    <CheckBox
-        android:id="@+id/cbColdPostPageFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <CheckBox
-        android:id="@+id/cbBakedPostPageFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/cbColdPostPageFragment"
-        app:layout_constraintTop_toBottomOf="@+id/cbColdPostPageFragment" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="חלבי"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cbMilkyPostPageFragment"
-        app:layout_constraintEnd_toStartOf="@+id/cbMilkyPostPageFragment"
-        app:layout_constraintTop_toTopOf="@+id/cbMilkyPostPageFragment" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="פרווה"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cbFurPostPageFragment"
-        app:layout_constraintEnd_toStartOf="@+id/cbFurPostPageFragment"
-        app:layout_constraintTop_toTopOf="@+id/cbFurPostPageFragment" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="קינוחים קרים"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cbColdPostPageFragment"
-        app:layout_constraintEnd_toStartOf="@+id/cbColdPostPageFragment"
-        app:layout_constraintTop_toTopOf="@+id/cbColdPostPageFragment" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="קינוחים אפויים"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cbBakedPostPageFragment"
-        app:layout_constraintEnd_toStartOf="@+id/cbBakedPostPageFragment"
-        app:layout_constraintTop_toTopOf="@+id/cbBakedPostPageFragment" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

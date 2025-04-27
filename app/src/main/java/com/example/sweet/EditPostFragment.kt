@@ -52,10 +52,6 @@ class EditPostFragment : Fragment() {
         binding.etIngredientsEditPostFragment.setText(recipe.ingredients)
         binding.etInstructionsEditPostFragment.setText(recipe.instructions)
         binding.etPreparationTimeEditPostFragment.setText(recipe.preparationTime)
-        binding.cbMilkyEditPostFragment.isChecked = recipe.categoryMilky
-        binding.cbFurEditPostFragment.isChecked = recipe.categoryFur
-        binding.cbColdEditPostFragment.isChecked = recipe.categoryCold
-        binding.cbBakedEditPostFragment.isChecked = recipe.categoryBaked
 
         val imageUrl = recipe.photograph
         imageUrl?.let {
@@ -92,10 +88,6 @@ class EditPostFragment : Fragment() {
             instructions = instructions,
             preparationTime = preparationTime,
             photograph = imageUri?.toString() ?: recipe.photograph,
-            categoryMilky = binding.cbMilkyEditPostFragment.isChecked,
-            categoryFur = binding.cbFurEditPostFragment.isChecked,
-            categoryCold = binding.cbColdEditPostFragment.isChecked,
-            categoryBaked = binding.cbBakedEditPostFragment.isChecked
         )
 
         // שמירה ב- Firebase

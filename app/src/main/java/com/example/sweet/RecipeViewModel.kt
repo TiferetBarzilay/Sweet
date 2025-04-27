@@ -19,10 +19,6 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application) 
 
 
     val allRecipes: LiveData<List<Recipe>> = recipeDao.getAllRecipes().asLiveData()
-    val milkyRecipes: LiveData<List<Recipe>> = recipeDao.getMilkyRecipes().asLiveData()
-    val furRecipes: LiveData<List<Recipe>> = recipeDao.getFurRecipes().asLiveData()
-    val coldRecipes: LiveData<List<Recipe>> = recipeDao.getColdRecipes().asLiveData()
-    val bakedRecipes: LiveData<List<Recipe>> = recipeDao.getBakedRecipes().asLiveData()
 
     /*
     fun getRecipeById(recipeId: String): LiveData<Recipe?> {
