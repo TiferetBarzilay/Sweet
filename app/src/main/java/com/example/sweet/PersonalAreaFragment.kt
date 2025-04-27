@@ -6,14 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.sweet.databinding.FragmentPersonalAreaBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class PersonalAreaFragment : Fragment() {
 
     private lateinit var binding: FragmentPersonalAreaBinding
+    val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,9 +41,9 @@ class PersonalAreaFragment : Fragment() {
             findNavController().navigate(R.id.action_personalAreaFragment_to_editPersonalAreaFragment)
         }
 
-        val favoritesButton=binding.btnFavouritesPersonalAreaFragment
-        favoritesButton.setOnClickListener {
-            findNavController().navigate(R.id.action_personalAreaFragment_to_favoritesPageFragment)
+        val logOutButton=binding.btnLogOutPersonalAreaFragment
+        logOutButton.setOnClickListener {
+            showLogOutConfirmationDialog()
         }
 
         val myPostsButton=binding.btnMyPostsPersonalAreaFragment
@@ -79,4 +83,27 @@ class PersonalAreaFragment : Fragment() {
         }
 
     }
+    private fun showLogOutConfirmationDialog() {
+        // יצירת AlertDialog
+        val builder = AlertDialog.Builder(requireContext())
+
+        // הגדרת כותרת והודעה
+        builder.setTitle("התנתקות")
+        builder.setMessage("האם אתה בטוח שברצונך להתנתק?")
+
+        // כפתור "כן"
+        builder.setPositiveButton("כן") { dialog, which ->
+            auth.signOut()
+            Toast.makeText(context, "התנתקת בהצלחה", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_personalAreaFragment_to_logInFragment)        }
+
+        // כפתור "לא"
+        builder.setNegativeButton("לא") { dialog, which ->
+            dialog.dismiss() // סוגר את הדיאלוג אם המשתמש לחץ "לא"
+        }
+
+        // יצירת והצגת הדיאלוג
+        builder.create().show()
+    }
+
 }

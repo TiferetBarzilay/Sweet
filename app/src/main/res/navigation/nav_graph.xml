@@ -72,9 +72,6 @@
         android:label="איזור אישי"
         tools:layout="@layout/fragment_personal_area">
         <action
-            android:id="@+id/action_personalAreaFragment_to_favoritesPageFragment"
-            app:destination="@id/favoritesPageFragment" />
-        <action
             android:id="@+id/action_personalAreaFragment_to_myPostsFragment"
             app:destination="@id/myPostsFragment" />
         <action
@@ -89,6 +86,9 @@
             app:launchSingleTop="true"
             app:popUpTo="@id/nav_graph"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_personalAreaFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
     <fragment
         android:id="@+id/postFragment"
@@ -113,15 +113,6 @@
         <action
             android:id="@+id/action_myPostsFragment_to_postPageFragment"
             app:destination="@id/postPageFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/favoritesPageFragment"
-        android:name="com.example.sweet.FavoritesPageFragment"
-        android:label="מועדפים"
-        tools:layout="@layout/fragment_favorites_page">
-        <action
-            android:id="@+id/action_favoritesPageFragment_to_postFragment"
-            app:destination="@id/postFragment" />
     </fragment>
     <fragment
         android:id="@+id/postPageFragment"

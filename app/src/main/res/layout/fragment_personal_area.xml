@@ -17,49 +17,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
-        android:id="@+id/btnFavouritesPersonalAreaFragment"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
+        android:id="@+id/btnLogOutPersonalAreaFragment"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#F2B0AF"
-        android:text="מועדפים"
+        android:text="התנתקות"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="2dp"
         android:textColor="@color/black"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnMyPostsPersonalAreaFragment"
-        app:layout_constraintEnd_toStartOf="@+id/btnMyPostsPersonalAreaFragment"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAddPostsPersonalAreaFragment" />
 
     <Button
         android:id="@+id/btnMyPostsPersonalAreaFragment"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="276dp"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#F2B0AF"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="2dp"
         android:text="פוסטים שלי"
         android:textColor="@color/black"
         android:textColorLink="#673AB7"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnAddPostsPersonalAreaFragment"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnFavouritesPersonalAreaFragment" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserNamePersonalAreaFragment" />
 
     <Button
         android:id="@+id/btnAddPostsPersonalAreaFragment"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:backgroundTint="#F2B0AF"
         android:text="העלאת פוסט"
         android:textColor="@color/black"
+        app:strokeColor="@android:color/black"
+        app:strokeWidth="2dp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnMyPostsPersonalAreaFragment"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnMyPostsPersonalAreaFragment" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMyPostsPersonalAreaFragment" />
 
     <ImageButton
 
