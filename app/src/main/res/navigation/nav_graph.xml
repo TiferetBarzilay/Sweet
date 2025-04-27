@@ -206,7 +206,7 @@
     <fragment
         android:id="@+id/restAPIFragment"
         android:name="com.example.sweet.RestAPIFragment"
-        android:label="RestAPI"
+        android:label="TheMealDB"
         tools:layout="@layout/fragment_rest_a_p_i">
         <action
             android:id="@+id/action_restAPIFragment_to_categoriesFragment"
