@@ -21,10 +21,6 @@ object RecipeRepository {
     }
 
     fun updateRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
-        //  val index = recipes.indexOfFirst { it.id == recipe.id }
-        //  if (index != -1) {
-        //    recipe[index] = recipe
-        //     }
         db.collection("recipes")
             .document(recipe.id)
             .set(recipe)

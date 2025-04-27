@@ -33,13 +33,12 @@ class RegistrationFragment : Fragment() {
 
         val registerButton=binding.btnRegistrationFragment
         registerButton.setOnClickListener{
-            // קבלת השם והסיסמא מהשדות
-            val username  = binding.etNameRegistrationFragment.text.toString()
+            // קבלת המייל והסיסמא מהשדות
             val password = binding.etPasswordRegistrationFragment.text.toString()
             val email = binding.etEmailAddressRegistrationFragment.text.toString()
 
 
-            if (username .isNotEmpty() && password.isNotEmpty() && email.isNotEmpty()){
+            if ( password.isNotEmpty() && email.isNotEmpty()){
                 // יצירת משתמש עם Firebase Authentication
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
