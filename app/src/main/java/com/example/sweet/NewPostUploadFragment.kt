@@ -50,6 +50,10 @@ class NewPostUploadFragment : Fragment() {
         binding.btnSaveNewPostUploadFragment.setOnClickListener {
             uploadRecipe()
         }
+
+        binding.btnCancelNewPostUploadFragment.setOnClickListener {
+            Navigation.findNavController(requireView()).popBackStack()
+        }
     }
 
     private fun uploadRecipe() {
