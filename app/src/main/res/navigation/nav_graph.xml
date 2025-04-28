@@ -51,7 +51,11 @@
         android:id="@+id/newPostUploadFragment"
         android:name="com.example.sweet.NewPostUploadFragment"
         android:label="העלאת מתכון חדש"
-        tools:layout="@layout/fragment_new_post_upload" />
+        tools:layout="@layout/fragment_new_post_upload" >
+        <action
+            android:id="@+id/action_newPostUploadFragment_to_postPageFragment"
+            app:destination="@id/postPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editPersonalAreaFragment"
         android:name="com.example.sweet.EditPersonalAreaFragment"
@@ -79,7 +83,11 @@
         android:id="@+id/editPostFragment"
         android:name="com.example.sweet.EditPostFragment"
         android:label="עריכת פוסט"
-        tools:layout="@layout/fragment_edit_post" />
+        tools:layout="@layout/fragment_edit_post" >
+        <action
+            android:id="@+id/action_editPostFragment_to_postPageFragment"
+            app:destination="@id/postPageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.example.sweet.LogInFragment"

@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.bumptech.glide.Glide
 import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.FragmentNewPostUploadBinding
@@ -21,6 +23,7 @@ class NewPostUploadFragment : Fragment() {
     private lateinit var binding: FragmentNewPostUploadBinding
     private var imageUri: Uri? = null
     private lateinit var recipeViewModel: RecipeViewModel
+    private var isImageAvailable = false
 
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -29,6 +32,7 @@ class NewPostUploadFragment : Fragment() {
             Glide.with(this)
                 .load(it)
                 .into(binding.civNewPostUploadFragment)
+            isImageAvailable = true
         }
     }
 
@@ -64,10 +68,15 @@ class NewPostUploadFragment : Fragment() {
         val instructions = binding.edInstructionsNewPostUploadFragment.text.toString()
 
         val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
-        val userId=currentUserId
+        val userId = currentUserId
 
         if (recipeName.isBlank() || preparationTime.isBlank() || ingredients.isBlank() || instructions.isBlank()) {
             Toast.makeText(requireContext(), "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (!isImageAvailable) {
+            Toast.makeText(requireContext(), "נא להעלות תמונה", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -75,14 +84,12 @@ class NewPostUploadFragment : Fragment() {
             RecipeRepository.uploadImageToFirebaseStorage(
                 imageUri = imageUri!!,
                 onSuccess = { imageDownloadUrl ->
-                    saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, imageDownloadUrl,userId)
+                    saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, imageDownloadUrl, userId)
                 },
                 onFailure = {
                     Toast.makeText(requireContext(), "נכשלה העלאת התמונה", Toast.LENGTH_SHORT).show()
                 }
             )
-        } else {
-            saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, "",userId)
         }
     }
 
@@ -94,8 +101,7 @@ class NewPostUploadFragment : Fragment() {
         instructions: String,
         imageDownloadUrl: String,
         userId: String,
-        ) {
-
+    ) {
         val newRecipe = Recipe(
             id = UUID.randomUUID().toString(),
             name = recipeName,
@@ -104,7 +110,7 @@ class NewPostUploadFragment : Fragment() {
             preparationTime = preparationTime,
             photograph = imageDownloadUrl,
             userId = userId
-            )
+        )
 
         RecipeRepository.addRecipe(
             recipe = newRecipe,
@@ -112,8 +118,20 @@ class NewPostUploadFragment : Fragment() {
                 Toast.makeText(requireContext(), "מתכון נוסף בהצלחה!", Toast.LENGTH_SHORT).show()
                 binding.civNewPostUploadFragment.setImageDrawable(null)
                 imageUri = null
-                Navigation.findNavController(requireView()).popBackStack()
-            },
+                isImageAvailable = false
+                val bundle = Bundle().apply {
+                    putParcelable("recipe", newRecipe)
+                }
+                findNavController().navigate(
+                    R.id.postPageFragment,
+                    bundle,
+                    navOptions {
+                        popUpTo(R.id.newPostUploadFragment) {
+                            inclusive = true // מוחק את הקודם מהסטאק
+                        }
+                    }
+                )
+             },
             onFailure = {
                 Toast.makeText(requireContext(), "נכשלה העלאת מתכון!", Toast.LENGTH_SHORT).show()
             }

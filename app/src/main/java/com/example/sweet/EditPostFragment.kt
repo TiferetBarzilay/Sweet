@@ -22,15 +22,14 @@ class EditPostFragment : Fragment() {
     private lateinit var recipeViewModel: RecipeViewModel
 
     private var imageUri: Uri? = null
-    private val getContent =
-        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-            uri?.let {
-                imageUri = it
-                Glide.with(this)
-                    .load(it)
-                    .into(binding.civEditPostFragment)
-            }
+    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            imageUri = it
+            Glide.with(this)
+                .load(it)
+                .into(binding.civEditPostFragment)
         }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,6 +60,7 @@ class EditPostFragment : Fragment() {
                 .into(binding.civEditPostFragment)
         }
 
+
         binding.btnPlusEditPostFragment.setOnClickListener {
             getContent.launch("image/*")
         }
@@ -82,10 +82,11 @@ class EditPostFragment : Fragment() {
         }
 
         if (imageUri != null) {
+            // If user selected a new image, upload it
             RecipeRepository.uploadImageToFirebaseStorage(
                 imageUri = imageUri!!,
                 onSuccess = { imageDownloadUrl ->
-                    saveRecipeToFirestore(
+                    updateRecipeToFirestore(
                         name,
                         preparationTime,
                         ingredients,
@@ -99,11 +100,18 @@ class EditPostFragment : Fragment() {
                 }
             )
         } else {
-            saveRecipeToFirestore(name, preparationTime, ingredients, instructions, "")
+            // If no new image was selected, keep the existing one
+            updateRecipeToFirestore(
+                name,
+                preparationTime,
+                ingredients,
+                instructions,
+                recipe.photograph
+            )
         }
     }
 
-    private fun saveRecipeToFirestore(
+    private fun updateRecipeToFirestore(
         recipeName: String,
         preparationTime: String,
         ingredients: String,
@@ -126,8 +134,22 @@ class EditPostFragment : Fragment() {
                 Toast.makeText(requireContext(), "מתכון עודכן בהצלחה!", Toast.LENGTH_SHORT).show()
                 binding.civEditPostFragment.setImageDrawable(null)
                 imageUri = null
-                Navigation.findNavController(requireView()).popBackStack()
-            },
+
+                // Navigate back with the updated recipe
+                val bundle = Bundle().apply {
+                    putParcelable("recipe", updatedRecipe)
+                }
+                findNavController().navigate(
+                    R.id.postPageFragment,
+                    bundle,
+                    navOptions {
+                        popUpTo(R.id.postPageFragment) {
+                            inclusive = true // מוחק את הקודם מהסטאק
+                        }
+                    }
+                )
+              },
+
             onFailure = {
                 Toast.makeText(requireContext(), "נכשלה העלאת מתכון!", Toast.LENGTH_SHORT).show()
             }

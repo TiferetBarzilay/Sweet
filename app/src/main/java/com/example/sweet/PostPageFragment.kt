@@ -37,13 +37,12 @@ class PostPageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvNamePostPageFragment.text=recipe.name
-        binding.tvPreparationTimePostPageFragment.text=recipe.preparationTime
-        binding.tvInstructionsPostPageFragment.text=recipe.instructions
-        binding.tvIngredientsPostPageFragment.text=recipe.ingredients
+        binding.tvNamePostPageFragment.text = recipe.name
+        binding.tvPreparationTimePostPageFragment.text = recipe.preparationTime
+        binding.tvInstructionsPostPageFragment.text = recipe.instructions
+        binding.tvIngredientsPostPageFragment.text = recipe.ingredients
 
-        val imageUrl = recipe.photograph
-        imageUrl?.let {
+        recipe.photograph?.let {
             Glide.with(this)
                 .load(it)
                 .into(binding.ivPostPhotoPostPageFragment)
@@ -63,6 +62,8 @@ class PostPageFragment : Fragment() {
 
         }
     }
+
+
 
     private fun showDeletePostConfirmationDialog() {
         val builder = AlertDialog.Builder(requireContext())
