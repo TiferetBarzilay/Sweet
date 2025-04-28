@@ -18,14 +18,14 @@ object RecipeRepository {
     fun addRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
         db.collection("recipes")
             .add(recipe)
-            .addOnSuccessListener { documentReference ->
-                val recipeWithId = recipe.copy(id = documentReference.id)
-                updateRecipe(recipeWithId, onSuccess, onFailure)
+            .addOnSuccessListener {
+                onSuccess(null)
             }
             .addOnFailureListener(onFailure)
     }
 
     fun updateRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
+
         db.collection("recipes")
             .document(recipe.id)
             .set(recipe)
@@ -85,7 +85,9 @@ object RecipeRepository {
             .whereEqualTo("userId", userId)
             .get()
             .addOnSuccessListener { result ->
-                val recipes = result.toObjects(Recipe::class.java)
+                val recipes = result.map { document ->
+                    document.toObject(Recipe::class.java).copy(id = document.id)
+                }
                 onSuccess(recipes)
             }
             .addOnFailureListener { exception ->

@@ -15,6 +15,8 @@ import androidx.navigation.navOptions
 import com.bumptech.glide.Glide
 import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.FragmentEditPostBinding
+import com.google.firebase.auth.FirebaseAuth
+import java.util.UUID
 
 class EditPostFragment : Fragment() {
     private lateinit var binding: FragmentEditPostBinding
@@ -71,10 +73,14 @@ class EditPostFragment : Fragment() {
     }
 
     private fun editPost() {
+        val  id = recipe.id
         val name = binding.etNameEditPostFragment.text.toString().trim()
         val preparationTime = binding.etPreparationTimeEditPostFragment.text.toString().trim()
         val ingredients = binding.etIngredientsEditPostFragment.text.toString().trim()
         val instructions = binding.etInstructionsEditPostFragment.text.toString().trim()
+
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val userId = currentUserId
 
         if (name.isEmpty() || preparationTime.isEmpty() || ingredients.isEmpty() || instructions.isEmpty()) {
             Toast.makeText(requireContext(), "נא למלא את כל השדות", Toast.LENGTH_SHORT).show()
@@ -87,11 +93,13 @@ class EditPostFragment : Fragment() {
                 imageUri = imageUri!!,
                 onSuccess = { imageDownloadUrl ->
                     updateRecipeToFirestore(
+                        id,
                         name,
                         preparationTime,
                         ingredients,
                         instructions,
-                        imageDownloadUrl
+                        imageDownloadUrl,
+                        userId
                     )
                 },
                 onFailure = {
@@ -102,30 +110,35 @@ class EditPostFragment : Fragment() {
         } else {
             // If no new image was selected, keep the existing one
             updateRecipeToFirestore(
+                id,
                 name,
                 preparationTime,
                 ingredients,
                 instructions,
-                recipe.photograph
+                recipe.photograph,
+                userId
             )
         }
     }
 
     private fun updateRecipeToFirestore(
+        recipeId:String,
         recipeName: String,
         preparationTime: String,
         ingredients: String,
         instructions: String,
-        imageDownloadUrl: String
+        imageDownloadUrl: String,
+        userId: String
     ) {
 
         val updatedRecipe = Recipe(
-            id = recipe.id,
+            id = recipeId,
             name = recipeName,
             ingredients = ingredients,
             instructions = instructions,
             preparationTime = preparationTime,
-            photograph = imageDownloadUrl
+            photograph = imageDownloadUrl,
+            userId=userId
         )
 
         RecipeRepository.updateRecipe(
