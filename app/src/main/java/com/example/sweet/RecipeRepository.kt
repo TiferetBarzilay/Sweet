@@ -2,6 +2,7 @@ package com.example.sweet
 
 import android.net.Uri
 import com.example.sweet.Dao.Recipe
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -73,5 +74,24 @@ object RecipeRepository {
                 onFailure(exception)
             }
     }
+
+    fun getRecipesByUserId(
+        userId: String,
+        onSuccess: (List<Recipe>) -> Unit,
+        onFailure: (Exception) -> Unit
+    ) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("recipes")
+            .whereEqualTo("userId", userId)
+            .get()
+            .addOnSuccessListener { result ->
+                val recipes = result.toObjects(Recipe::class.java)
+                onSuccess(recipes)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
 
 }

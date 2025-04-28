@@ -14,5 +14,6 @@ data class Recipe(
     var preparationTime: String = "",
     var ingredients: String = "",
     var instructions: String = "",
-    var photograph: String = ""
+    var photograph: String = "",
+    var userId: String = ""
 ) : Parcelable

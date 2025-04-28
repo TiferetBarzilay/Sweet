@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.FragmentMyPostsBinding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MyPostsFragment : Fragment() {
@@ -43,15 +44,39 @@ class MyPostsFragment : Fragment() {
         binding.rvMyPostsFragment.layoutManager=LinearLayoutManager(context)
         binding.rvMyPostsFragment.adapter=myPostsAdapter
 
-        // שליפת המתכונים מ-Firebase
-        RecipeRepository.getRecipes(
-            onSuccess = {recipes: List<Recipe> ->
-                myPostsAdapter.submitList(recipes)
-            },
-            onFailure = {exception ->
-                Log.e("SearchFragment", "Error getting recipes: ${exception.message}", exception)
-            }
-        )
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        if (currentUserId != null) {
+            RecipeRepository.getRecipesByUserId(
+                userId = currentUserId,
+                onSuccess = { recipes ->
+                    myPostsAdapter.submitList(recipes)
+                },
+                onFailure = { exception ->
+                    Log.e("MyPostsFragment", "Error getting recipes: ${exception.message}", exception)
+                }
+            )
+        }
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        loadUserPosts()
+    }
+
+    private fun loadUserPosts() {
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        if (currentUserId != null) {
+            RecipeRepository.getRecipesByUserId(
+                userId = currentUserId,
+                onSuccess = { recipes ->
+                    myPostsAdapter.submitList(recipes)
+                },
+                onFailure = { exception ->
+                    Log.e("MyPostsFragment", "Error getting recipes: ${exception.message}", exception)
+                }
+            )
+        }
+    }
+
 }

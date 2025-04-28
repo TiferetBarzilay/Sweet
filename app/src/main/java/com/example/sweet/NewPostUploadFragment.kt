@@ -13,6 +13,8 @@ import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.FragmentNewPostUploadBinding
+import com.google.firebase.auth.FirebaseAuth
+import java.util.UUID
 
 
 class NewPostUploadFragment : Fragment() {
@@ -61,6 +63,9 @@ class NewPostUploadFragment : Fragment() {
         val ingredients = binding.edIngredientsNewPostUploadFragment.text.toString()
         val instructions = binding.edInstructionsNewPostUploadFragment.text.toString()
 
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: ""
+        val userId=currentUserId
+
         if (recipeName.isBlank() || preparationTime.isBlank() || ingredients.isBlank() || instructions.isBlank()) {
             Toast.makeText(requireContext(), "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show()
             return
@@ -70,14 +75,14 @@ class NewPostUploadFragment : Fragment() {
             RecipeRepository.uploadImageToFirebaseStorage(
                 imageUri = imageUri!!,
                 onSuccess = { imageDownloadUrl ->
-                    saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, imageDownloadUrl)
+                    saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, imageDownloadUrl,userId)
                 },
                 onFailure = {
                     Toast.makeText(requireContext(), "נכשלה העלאת התמונה", Toast.LENGTH_SHORT).show()
                 }
             )
         } else {
-            saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, "")
+            saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, "",userId)
         }
     }
 
@@ -87,16 +92,19 @@ class NewPostUploadFragment : Fragment() {
         preparationTime: String,
         ingredients: String,
         instructions: String,
-        imageDownloadUrl: String
-    ) {
+        imageDownloadUrl: String,
+        userId: String,
+        ) {
 
         val newRecipe = Recipe(
+            id = UUID.randomUUID().toString(),
             name = recipeName,
             ingredients = ingredients,
             instructions = instructions,
             preparationTime = preparationTime,
-            photograph = imageDownloadUrl
-        )
+            photograph = imageDownloadUrl,
+            userId = userId
+            )
 
         RecipeRepository.addRecipe(
             recipe = newRecipe,
