@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI
 import com.example.sweet.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
@@ -59,6 +60,12 @@ class MainActivity : AppCompatActivity() {
                 navController = it
             )
         }
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            // המשתמש מחובר - אפשר להמשיך ישר לאפליקציה
+            navController?.navigate(R.id.action_sweetAppFragment_to_homeFragment)
+        }
+
 
         //הגדרת ה navBarBottom:
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.main_activity_bottom_view)
@@ -100,15 +107,16 @@ class MainActivity : AppCompatActivity() {
         val logoImageView = binding.imgLogoMainActivity
         val fragmentContainerView = binding.mainNavHost
 
-        // הסתרת ה-FragmentContainerView וה-bottomNavigationView בהתחלה
-        fragmentContainerView.visibility = android.view.View.GONE
-
+        // הסתרת ה-FragmentContainerView וה-BottomNavigationView בהתחלה
+        fragmentContainerView.visibility = View.GONE
+        bottomNavigationView.visibility = View.GONE
 
         // החבא את הלוגו לאחר 3 שניות והצג את ה-FragmentContainerView
         Handler(Looper.getMainLooper()).postDelayed({
 
             logoImageView.visibility = ImageView.GONE  // החבאת הלוגו
-            fragmentContainerView.visibility = android.view.View.VISIBLE  // הצגת ה-FragmentContainerView
+            fragmentContainerView.visibility = View.VISIBLE  // הצגת ה-FragmentContainerView
+            bottomNavigationView.visibility = View.VISIBLE   // הצגת ה-BottomNavigationView
         }, 2000)
 
 
