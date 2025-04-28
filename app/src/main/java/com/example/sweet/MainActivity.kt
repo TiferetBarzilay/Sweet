@@ -1,6 +1,5 @@
 package com.example.sweet
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.ImageView
@@ -44,7 +43,6 @@ class MainActivity : AppCompatActivity() {
 
 
         enableEdgeToEdge()
-            // setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -53,7 +51,6 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment = supportFragmentManager.findFragmentById(R.id.main_nav_host) as NavHostFragment
         navController = navHostFragment?.navController
-        // קישור של ה-BottomNavigationView עם ה-NavController
         navController?.let {
             NavigationUI.setupActionBarWithNavController(
                 activity = this,
@@ -62,17 +59,14 @@ class MainActivity : AppCompatActivity() {
         }
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
-            // המשתמש מחובר - אפשר להמשיך ישר לאפליקציה
             navController?.navigate(R.id.action_sweetAppFragment_to_homeFragment)
         }
 
 
-        //הגדרת ה navBarBottom:
         val bottomNavigationView: BottomNavigationView = findViewById(R.id.main_activity_bottom_view)
         navController?.let { NavigationUI.setupWithNavController(bottomNavigationView, it) }
 
 
-        // הוספת OnDestinationChangedListener
         navController?.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.sweetAppFragment, R.id.registrationFragment, R.id.logInFragment, R.id.newPostUploadFragment, R.id.editPostFragment -> {
@@ -91,7 +85,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             
-            // מסתיר את החץ חזור בפרגמטים ספציפיים
             when (destination.id) {
                 R.id.homeFragment, R.id.personalAreaFragment, R.id.restAPIFragment -> {
                     supportActionBar?.setDisplayHomeAsUpEnabled(false)
@@ -107,16 +100,14 @@ class MainActivity : AppCompatActivity() {
         val logoImageView = binding.imgLogoMainActivity
         val fragmentContainerView = binding.mainNavHost
 
-        // הסתרת ה-FragmentContainerView וה-BottomNavigationView בהתחלה
         fragmentContainerView.visibility = View.GONE
         bottomNavigationView.visibility = View.GONE
 
-        // החבא את הלוגו לאחר 3 שניות והצג את ה-FragmentContainerView
         Handler(Looper.getMainLooper()).postDelayed({
 
-            logoImageView.visibility = ImageView.GONE  // החבאת הלוגו
-            fragmentContainerView.visibility = View.VISIBLE  // הצגת ה-FragmentContainerView
-            bottomNavigationView.visibility = View.VISIBLE   // הצגת ה-BottomNavigationView
+            logoImageView.visibility = ImageView.GONE
+            fragmentContainerView.visibility = View.VISIBLE
+            bottomNavigationView.visibility = View.VISIBLE
         }, 2000)
 
 
@@ -124,7 +115,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//   פונקציה זו  לא קיימת בפרוייקט של חוה! עשינו בשיעור עם יהודה בשיעור 11 וזה בשביל הסרגל התחתון
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu,menu)
         return super.onCreateOptionsMenu(menu)

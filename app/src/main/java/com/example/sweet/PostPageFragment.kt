@@ -43,11 +43,10 @@ class PostPageFragment : Fragment() {
         binding.tvIngredientsPostPageFragment.text=recipe.ingredients
 
         val imageUrl = recipe.photograph
-        // בדוק אם ה-URL קיים וטעון אותו ב-ImageView
         imageUrl?.let {
             Glide.with(this)
-                .load(it) // טוען את התמונה מ-URL של Firebase
-                .into(binding.ivPostPhotoPostPageFragment) // הצגת התמונה ב-ImageView
+                .load(it)
+                .into(binding.ivPostPhotoPostPageFragment)
         }
 
         val editButton=binding.btnEditPostDetailsPostPageFragment
@@ -66,24 +65,22 @@ class PostPageFragment : Fragment() {
     }
 
     private fun showDeletePostConfirmationDialog() {
-        // יצירת AlertDialog
         val builder = AlertDialog.Builder(requireContext())
 
-        // הגדרת כותרת והודעה
         builder.setTitle("מחיקה")
         builder.setMessage("האם אתה בטוח שברצונך למחוק את הפוסט?")
 
-        // כפתור "כן"
+
         builder.setPositiveButton("כן") { dialog, which ->
            deletPost()
         }
 
-        // כפתור "לא"
+
         builder.setNegativeButton("לא") { dialog, which ->
-            dialog.dismiss() // סוגר את הדיאלוג אם המשתמש לחץ "לא"
+            dialog.dismiss()
         }
 
-        // יצירת והצגת הדיאלוג
+
         builder.create().show()
     }
 
@@ -97,6 +94,7 @@ class PostPageFragment : Fragment() {
             onFailure = { e ->
                 Toast.makeText(requireContext(), "שגיאה במחיקה: ${e.message}", Toast.LENGTH_SHORT).show()
             }
-        )    }
+        )
+    }
 }
 

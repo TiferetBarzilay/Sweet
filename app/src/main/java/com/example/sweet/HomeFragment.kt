@@ -31,7 +31,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recipeAdapter = RecipeAdapter(emptyList()) { recipe ->
-            // Handle item click here
             Toast.makeText(requireContext(), "נלחץ: ${recipe.name}", Toast.LENGTH_SHORT).show()
             val bundle = Bundle().apply {
                 putParcelable("recipe", recipe)

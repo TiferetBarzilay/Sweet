@@ -45,5 +45,4 @@ class RecipeViewModel(application: Application) : AndroidViewModel(application) 
         }
     }
 
-    // אפשר להוסיף כאן עוד פונקציות לפי קטגוריות או חיפושים...
 }

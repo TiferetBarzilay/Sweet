@@ -35,17 +35,14 @@ class LogInFragment : Fragment() {
         val logInButton=binding.btnLoginFragment
         logInButton.setOnClickListener{
 
-            // קבלת אימייל וסיסמא
             val email = binding.etEmailLoginFragment.text.toString()
             val password = binding.etPasswordLoginFragment.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-             //   val db = FirebaseFirestore.getInstance()
 
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // אם ההתחברות הצליחה
                             Log.d("Firebase", "User signed in successfully")
 
                             // ניווט למסך הראשי לאחר התחברות מוצלחת
@@ -54,13 +51,11 @@ class LogInFragment : Fragment() {
                            findNavController().navigate(R.id.action_logInFragment_to_homeFragment)
                         }
                         else {
-                            // הצגת הודעת שגיאה אם ההתחברות נכשלה
                             Log.w("Firebase", "Login failed", task.exception)
                         }
                     }
             }
             else {
-                // אם שדות שם המשתמש או הסיסמא ריקים
                 Toast.makeText(context, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show()
             }
         }
@@ -72,10 +67,9 @@ class LogInFragment : Fragment() {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // הודעה שהסיסמה נשלחה בהצלחה
                             Toast.makeText(requireContext(), "לינק לאיפוס סיסמה נשלח למייל שלך", Toast.LENGTH_SHORT).show()
-                        } else {
-                            // אם יש בעיה במשלוח האימייל
+                        }
+                        else {
                             Toast.makeText(requireContext(), "שגיאה, נסה שוב", Toast.LENGTH_SHORT).show()
                         }
                     }

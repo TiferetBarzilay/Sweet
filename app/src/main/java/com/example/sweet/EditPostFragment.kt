@@ -111,7 +111,6 @@ class EditPostFragment : Fragment() {
         imageDownloadUrl: String
     ) {
 
-        // יצירת אובייקט מתכון
         val updatedRecipe = Recipe(
             id = recipe.id,
             name = recipeName,
@@ -121,7 +120,6 @@ class EditPostFragment : Fragment() {
             photograph = imageDownloadUrl
         )
 
-        // שמירה ב- Firebase
         RecipeRepository.updateRecipe(
             recipe = updatedRecipe,
             onSuccess = {

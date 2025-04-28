@@ -59,7 +59,6 @@ class PersonalAreaFragment : Fragment() {
         }
     }
 
-    // זה מוודא שהשם משתמש והתמונה החדשים ישתנו באופן מיידי לאחר סיום העריכה
     override fun onResume() {
         super.onResume()
         setupUI()
@@ -67,42 +66,35 @@ class PersonalAreaFragment : Fragment() {
 
     private fun setupUI() {
 
-        // שליפת הנתונים מ-SharedPreferences
         val sharedPreferences = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
 
         val name = sharedPreferences.getString("name", " ")
         val imageUriString = sharedPreferences.getString("imageUri", null)
         val imageUri = imageUriString?.let { Uri.parse(it) }
 
-        // הצגת שם המשתמש
         binding.tvUserNamePersonalAreaFragment.setText(name)
 
-        // הצגת התמונה אם קיימת
         imageUri?.let {
             Glide.with(this).load(it).into(binding.ivUserPhotoPersonalAreaFragment)
         }
 
     }
     private fun showLogOutConfirmationDialog() {
-        // יצירת AlertDialog
+
         val builder = AlertDialog.Builder(requireContext())
 
-        // הגדרת כותרת והודעה
         builder.setTitle("התנתקות")
         builder.setMessage("האם אתה בטוח שברצונך להתנתק?")
 
-        // כפתור "כן"
         builder.setPositiveButton("כן") { dialog, which ->
             auth.signOut()
             Toast.makeText(context, "התנתקת בהצלחה", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_personalAreaFragment_to_logInFragment)        }
 
-        // כפתור "לא"
         builder.setNegativeButton("לא") { dialog, which ->
             dialog.dismiss() // סוגר את הדיאלוג אם המשתמש לחץ "לא"
         }
 
-        // יצירת והצגת הדיאלוג
         builder.create().show()
     }
 

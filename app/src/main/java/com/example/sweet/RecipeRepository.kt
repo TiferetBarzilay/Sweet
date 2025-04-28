@@ -13,10 +13,8 @@ object RecipeRepository {
     private val db = Firebase.firestore
     private val storage = FirebaseStorage.getInstance()
 
-    //private val recipes = mutableListOf<Recipe>()
 
     fun addRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
-        //recipes.add(recipe)
         db.collection("recipes")
             .add(recipe)
             .addOnSuccessListener { documentReference ->
@@ -35,7 +33,6 @@ object RecipeRepository {
     }
 
     fun deleteRecipe(recipe: Recipe, onSuccess: (Void?) -> Unit, onFailure: (Exception) -> Unit) {
-        //  recipe.removeIf { it.id == recipe.id }
         db.collection("recipes")
             .document(recipe.id)
             .delete()
@@ -45,7 +42,6 @@ object RecipeRepository {
     }
 
     fun getRecipes(onSuccess: (List<Recipe>) -> Unit, onFailure: (Exception) -> Unit) {
-        //return recipes
         db.collection("recipes")
             .get()
             .addOnSuccessListener { result ->

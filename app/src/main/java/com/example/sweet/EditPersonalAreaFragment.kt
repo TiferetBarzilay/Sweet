@@ -35,7 +35,6 @@ class EditPersonalAreaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // טוען נתונים מ־SharedPreferences
         val sharedPreferences = requireActivity().getSharedPreferences("user_data", AppCompatActivity.MODE_PRIVATE)
         val currentName = sharedPreferences.getString("name", "")
         val imageUriString = sharedPreferences.getString("imageUri", null)
@@ -49,7 +48,6 @@ class EditPersonalAreaFragment : Fragment() {
                 .into(binding.civUserPhotoEditPersonalAreaFragment)
         }
 
-        // כפתור שמירה
         binding.btnSaveEditPersonalAreaFragment.setOnClickListener {
             val name = binding.etNameEditPersonalAreaFragment.text.toString()
             val editor = sharedPreferences.edit()
@@ -63,7 +61,6 @@ class EditPersonalAreaFragment : Fragment() {
             Navigation.findNavController(view).popBackStack()
         }
 
-        // כפתור להוספת תמונה
         binding.btnPlusEditPersonalAreaFragment.setOnClickListener {
             getContent.launch("image/*")
         }

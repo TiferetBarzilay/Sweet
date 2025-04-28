@@ -14,5 +14,5 @@ data class Recipe(
     var preparationTime: String = "",
     var ingredients: String = "",
     var instructions: String = "",
-    var photograph: String = "" // ✅ כאן שמים את הקישור ל-Imgur
+    var photograph: String = ""
 ) : Parcelable

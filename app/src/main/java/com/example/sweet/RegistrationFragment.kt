@@ -33,31 +33,27 @@ class RegistrationFragment : Fragment() {
 
         val registerButton=binding.btnRegistrationFragment
         registerButton.setOnClickListener{
-            // קבלת המייל והסיסמא מהשדות
+
             val password = binding.etPasswordRegistrationFragment.text.toString()
             val email = binding.etEmailAddressRegistrationFragment.text.toString()
 
 
             if ( password.isNotEmpty() && email.isNotEmpty()){
-                // יצירת משתמש עם Firebase Authentication
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            // אם ההתחברות הצליחה
+
                             Log.d("Firebase", "User signed in successfully")
 
-                            // ניווט למסך הראשי לאחר התחברות מוצלחת
                             findNavController().navigate(R.id.action_registrationFragment_to_logInFragment)
                         }
                         else {
-                            // הצגת הודעת שגיאה אם ההרשמה נכשלה
                             Log.w("Firebase", "Registration failed", task.exception)
                         }
                     }
             }
             else {
-                // אם שדות המייל או הסיסמא ריקים
                 Toast.makeText(context, "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show()
 
             }

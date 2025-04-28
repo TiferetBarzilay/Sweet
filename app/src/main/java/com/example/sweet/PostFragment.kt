@@ -37,19 +37,12 @@ class PostFragment : Fragment() {
         binding.tvIngredientsPostFragment.text=recipe.ingredients
 
         val imageUrl = recipe.photograph
-        // בדוק אם ה-URL קיים וטעון אותו ב-ImageView
         imageUrl?.let {
             Glide.with(this)
-                .load(it) // טוען את התמונה מ-URL של Firebase
-                .into(binding.ivPostFragment) // הצגת התמונה ב-ImageView
+                .load(it)
+                .into(binding.ivPostFragment)
         }
-        }
-
-
-
-
-
-
-
     }
+
+}
 

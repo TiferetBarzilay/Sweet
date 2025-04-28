@@ -82,9 +82,6 @@ class NewPostUploadFragment : Fragment() {
     }
 
 
-
-
-
     private fun saveRecipeToFirestore(
         recipeName: String,
         preparationTime: String,
@@ -93,7 +90,6 @@ class NewPostUploadFragment : Fragment() {
         imageDownloadUrl: String
     ) {
 
-        // יצירת אובייקט מתכון
         val newRecipe = Recipe(
             name = recipeName,
             ingredients = ingredients,
@@ -102,7 +98,6 @@ class NewPostUploadFragment : Fragment() {
             photograph = imageDownloadUrl
         )
 
-        // שמירה ב- Firebase
         RecipeRepository.addRecipe(
             recipe = newRecipe,
             onSuccess = {
