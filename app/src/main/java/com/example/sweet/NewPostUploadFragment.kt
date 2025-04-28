@@ -1,26 +1,25 @@
 package com.example.sweet
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.bumptech.glide.Glide
 import com.example.sweet.Dao.Recipe
 import com.example.sweet.databinding.FragmentNewPostUploadBinding
 
+
 class NewPostUploadFragment : Fragment() {
     private lateinit var binding: FragmentNewPostUploadBinding
     private var imageUri: Uri? = null
     private lateinit var recipeViewModel: RecipeViewModel
+
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -62,31 +61,57 @@ class NewPostUploadFragment : Fragment() {
         val ingredients = binding.edIngredientsNewPostUploadFragment.text.toString()
         val instructions = binding.edInstructionsNewPostUploadFragment.text.toString()
 
+        if (recipeName.isBlank() || preparationTime.isBlank() || ingredients.isBlank() || instructions.isBlank()) {
+            Toast.makeText(requireContext(), "אנא מלא את כל השדות", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (imageUri != null) {
+            RecipeRepository.uploadImageToFirebaseStorage(
+                imageUri = imageUri!!,
+                onSuccess = { imageDownloadUrl ->
+                    saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, imageDownloadUrl)
+                },
+                onFailure = {
+                    Toast.makeText(requireContext(), "נכשלה העלאת התמונה", Toast.LENGTH_SHORT).show()
+                }
+            )
+        } else {
+            saveRecipeToFirestore(recipeName, preparationTime, ingredients, instructions, "")
+        }
+    }
+
+
+
+
+
+    private fun saveRecipeToFirestore(
+        recipeName: String,
+        preparationTime: String,
+        ingredients: String,
+        instructions: String,
+        imageDownloadUrl: String
+    ) {
+
         // יצירת אובייקט מתכון
         val newRecipe = Recipe(
             name = recipeName,
             ingredients = ingredients,
             instructions = instructions,
             preparationTime = preparationTime,
-            photograph = imageUri?.toString() ?: "",
+            photograph = imageDownloadUrl
         )
 
         // שמירה ב- Firebase
         RecipeRepository.addRecipe(
             recipe = newRecipe,
-            onSuccess = { documentId ->
-
-
-                // Show success message and navigate back
+            onSuccess = {
                 Toast.makeText(requireContext(), "מתכון נוסף בהצלחה!", Toast.LENGTH_SHORT).show()
-
-                // נקה את התמונה אחרי השמירה
                 binding.civNewPostUploadFragment.setImageDrawable(null)
                 imageUri = null
-
                 Navigation.findNavController(requireView()).popBackStack()
             },
-            onFailure = { exception ->
+            onFailure = {
                 Toast.makeText(requireContext(), "נכשלה העלאת מתכון!", Toast.LENGTH_SHORT).show()
             }
         )

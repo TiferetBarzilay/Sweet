@@ -22,14 +22,15 @@ class EditPostFragment : Fragment() {
     private lateinit var recipeViewModel: RecipeViewModel
 
     private var imageUri: Uri? = null
-    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            imageUri = it
-            Glide.with(this)
-                .load(it)
-                .into(binding.civEditPostFragment)
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            uri?.let {
+                imageUri = it
+                Glide.with(this)
+                    .load(it)
+                    .into(binding.civEditPostFragment)
+            }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -80,41 +81,56 @@ class EditPostFragment : Fragment() {
             return
         }
 
+        if (imageUri != null) {
+            RecipeRepository.uploadImageToFirebaseStorage(
+                imageUri = imageUri!!,
+                onSuccess = { imageDownloadUrl ->
+                    saveRecipeToFirestore(
+                        name,
+                        preparationTime,
+                        ingredients,
+                        instructions,
+                        imageDownloadUrl
+                    )
+                },
+                onFailure = {
+                    Toast.makeText(requireContext(), "נכשלה העלאת התמונה", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            )
+        } else {
+            saveRecipeToFirestore(name, preparationTime, ingredients, instructions, "")
+        }
+    }
+
+    private fun saveRecipeToFirestore(
+        recipeName: String,
+        preparationTime: String,
+        ingredients: String,
+        instructions: String,
+        imageDownloadUrl: String
+    ) {
+
         // יצירת אובייקט מתכון
         val updatedRecipe = Recipe(
             id = recipe.id,
-            name = name,
+            name = recipeName,
             ingredients = ingredients,
             instructions = instructions,
             preparationTime = preparationTime,
-            photograph = imageUri?.toString() ?: recipe.photograph,
+            photograph = imageDownloadUrl
         )
 
         // שמירה ב- Firebase
         RecipeRepository.updateRecipe(
             recipe = updatedRecipe,
             onSuccess = {
-                // Update Room database
-               // recipeViewModel.updateRecipe(updatedRecipe)
-                
-                // Show success message and navigate back
                 Toast.makeText(requireContext(), "מתכון עודכן בהצלחה!", Toast.LENGTH_SHORT).show()
-                
-                // Navigate back with the updated recipe
-                val bundle = Bundle().apply {
-                    putParcelable("recipe", updatedRecipe)
-                }
-                findNavController().navigate(
-                    R.id.postPageFragment,
-                    bundle,
-                    navOptions {
-                        popUpTo(R.id.postPageFragment) {
-                            inclusive = true // מוחק את הקודם מהסטאק
-                        }
-                    }
-                )
+                binding.civEditPostFragment.setImageDrawable(null)
+                imageUri = null
+                Navigation.findNavController(requireView()).popBackStack()
             },
-            onFailure = { exception ->
+            onFailure = {
                 Toast.makeText(requireContext(), "נכשלה העלאת מתכון!", Toast.LENGTH_SHORT).show()
             }
         )
