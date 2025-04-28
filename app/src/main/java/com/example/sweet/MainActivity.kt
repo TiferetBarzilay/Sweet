@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         // הוספת OnDestinationChangedListener
         navController?.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.sweetAppFragment, R.id.registrationFragment, R.id.logInFragment -> {
+                R.id.sweetAppFragment, R.id.registrationFragment, R.id.logInFragment, R.id.newPostUploadFragment, R.id.editPostFragment -> {
                     bottomNavigationView.visibility = BottomNavigationView.GONE
                 }
                 else -> {
